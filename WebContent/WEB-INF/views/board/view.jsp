@@ -33,11 +33,6 @@ $(document).ready(function() {
 	//댓글 입력
 	$("#btnReplyInsert").click(function(){
 		
-		//console.log($("#replynickname").val());
-		//console.log($("#replyreContent").val());
-		
-		//게시글번호
-		//${viewBoard.boardno}
 		
 		$form=$("<form>").attr({
 			action:"/reply/insert",
@@ -57,8 +52,8 @@ $(document).ready(function() {
 				})
 		
 		).append(
-				$("<textarea>").attr("name","content")
-				.css("display","none").text($("#reContent").val())
+				$("<textarea>").attr("name","recontent")
+				.css("display","none").text($("#reContent").val()) //입력칸에 퍼렇게 색 뜸
 				);
 		
 		$(document.body).append($form);
@@ -91,6 +86,11 @@ $(document).ready(function() {
 	
 	}
 
+	//------------------------------------------------------------------------------
+	
+	
+	
+	
 </script>
 
 <style>
@@ -288,9 +288,8 @@ table, tr{
 <!-- 댓글입력 -->
 <div class="form-inline text-center"  id="reply">
 
-	<input type="text" size="10" class="form-control" id="replyWriter" value="${nickname }" readonly="readonly"/>
-	<input type="text" size="120" class="form-control" id="replyContent"/>
-<!-- 	<textarea rows="2" cols="100" class="form-control" id="replyContent" ></textarea> -->
+	<input type="text" size="10" class="form-control" id="replyWriter" value="${sessionScope.nickname }" readonly="readonly"/>
+	<textarea rows="2" cols="100" class="form-control" id="reContent" ></textarea>
 	<button id="btnReplyInsert" class="btn" >입력</button>
 </div>	<!-- 댓글 입력 end -->
 </c:if>
@@ -306,8 +305,8 @@ table, tr{
 <tr>
 	<th style="width: 5%;">번호</th>
 	<th style="width: 10%;">닉네임</th>
-	<th style="width: 10%;">게시글번호</th>
-	<th style="width: 75%;">댓글</th>
+	<th style="width: 65%;">댓글</th>
+	<th style="width: 20%;">작성일</th>
 </tr>
 </thead>
 
@@ -317,15 +316,11 @@ table, tr{
 
 <tr data-replyno="${reply.replyno }">
 
+	<td>${reply.rnum }</td>
 	<td>${reply.nickname }</td>
-	
-	<c:forEach items="${list }" var="board">
-	<td>${board.boardno }</td>
-	</c:forEach>
-	
 	<td>${reply.recontent }</td>
-	
-	<c:if test="${reply.nickname == sessionScope.sessionNickname}">
+	<td><fmt:formatDate value="${reply.insertdate }" pattern="yy-MM-dd hh:mm:ss" /></td>
+	<c:if test="${sessionScope.nickname eq requset.nickname}">
 		<button class="btn btn-danger btn-sm" onclick="deleteReply(${reply.replyno });">삭제</button>
 		</c:if>
 </tr>

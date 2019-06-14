@@ -65,12 +65,12 @@ public class BoardListController extends HttpServlet {
 			region = "all";
 		}
 		
-		Map<Integer, List> searchMap = new HashMap<>();
-		if(event==null) {  // 종목 값 없을 경우 월 일정 모두 검색하여 저장 
-			for(int i=0; i<lastDate; i++) {
-				
-			}
-		}
+//		Map<Integer, List> searchMap = new HashMap<>();
+//		if(event==null) {  // 종목 값 없을 경우 월 일정 모두 검색하여 저장 
+//			for(int i=0; i<lastDate; i++) {
+//				
+//			}
+//		}
 	
 	}
 }

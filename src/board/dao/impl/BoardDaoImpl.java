@@ -175,34 +175,34 @@ public class BoardDaoImpl implements BoardDao {
 
 	
 	// 지역 조회
-	@Override
-	public Board selectBoardByTeamRegion(Board viewBoard) {
-
-		String sql = "";
-		sql += "select * from board";
-   		sql += " where scheduleno in(";
-        sql += " select scheduleno from schedule";
-        sql += " where (hometeam = ? or awayteam = ?)"; 
-        sql += " and hometeam in (select teamname from team where region = ?));";
-
-
-		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, viewBoard);
-
-		} catch (SQLException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				if(rs!=null)	rs.close();
-				if(ps!=null)	ps.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return viewBoard;
-	}
+//	@Override
+//	public Board selectBoardByTeamRegion(Board viewBoard) {
+//
+//		String sql = "";
+//		sql += "select * from board";
+//   		sql += " where scheduleno in(";
+//        sql += " select scheduleno from schedule";
+//        sql += " where (hometeam = ? or awayteam = ?)"; 
+//        sql += " and hometeam in (select teamname from team where region = ?));";
+//
+//
+//		try {
+//			ps = conn.prepareStatement(sql);
+//			ps.setString(1, viewBoard);
+//
+//		} catch (SQLException e){
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				if(rs!=null)	rs.close();
+//				if(ps!=null)	ps.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//
+//		return viewBoard;
+//	}
 
 
 	// 게시글 조회 
