@@ -18,7 +18,7 @@
 }
 
 .schedule {
-	height : 200px;
+	height : 220px;
 	text-align: center;
 	font-size: 13px;
 	
@@ -73,7 +73,7 @@
 </script>
 
 <!-- 좌측 레이아웃 -->
-<div style="width:200px; background: #b4b4b4; float:left; height:1510px; text-align: center">
+<div style="width:200px; background: #b4b4b4; float:left; height:1670px; text-align: center">
 <br>
 <br>
 <br>
@@ -192,7 +192,7 @@
 </form>
 </div>
 
-<div style="width:1200px; height: 1510px;">
+<div style="width:1200px; height: 1660px;">
 <br>
 <br>
 <br>
@@ -257,7 +257,7 @@
 	</tr>
 	<% for(int i=1; i<=lastDate+startDay; i++) { /* 달력 생성을 위한 반복문 */
 		if(i%7==1) { %>
-			<tr style="height: 230px;">
+			<tr style="height: 250px;">
 		<% } %>
 		<td>
 		<% if(i>startDay) { %>	<!-- 달력 1일 날짜 위치에서 시작하기 위한 조건문 -->

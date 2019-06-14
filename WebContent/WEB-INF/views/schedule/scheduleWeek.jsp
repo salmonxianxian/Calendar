@@ -16,7 +16,7 @@
 }
 
 .schedule {
-	height : 200px;
+	height : 220px;
 	text-align: center;
 	font-size: 12px;
 	
@@ -275,7 +275,7 @@
 		<td align="center" style="width: 150px;">금</td>
 		<td align="center" style="width: 150px;">토</td> 
 	</tr>
-	<tr style="height: 230px;">
+	<tr style="height: 250px;">
 	<% if(week==1) { 
 		for(int i=1; i<=7; i++) { %>
 		<td>
