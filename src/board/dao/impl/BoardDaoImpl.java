@@ -176,20 +176,225 @@ public class BoardDaoImpl implements BoardDao {
 	
 	// 지역 조회
 	@Override
-	public Board selectBoardByTeamRegion(Board viewBoard) {
+	public List selectBoardByTeamRegion(Paging paging, String event, String team, String region) {
 
-		String sql = "";
-		sql += "select * from board";
-   		sql += " where scheduleno in(";
-        sql += " select scheduleno from schedule";
-        sql += " where (hometeam = ? or awayteam = ?)"; 
-        sql += " and hometeam in (select teamname from team where region = ?));";
-
-
+		List list = new ArrayList();
+		
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, viewBoard);
+			
+		if("all".equals(team)) {
+			if("all".equals(region)) {
+				if("1".equals(event)) {	//	야구 모든 팀 모든 지역 검색
+					String sql = "";
+					sql += "SELECT * FROM (";
+					sql += " SELECT rownum rnum, B.* FROM (";
+					sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+					sql += " where scheduleno in(";
+					sql += " select scheduleno from schedule";
+					sql += " where hometeam in("; 
+					sql += " select teamname from team where event = '1')";
+					sql += " )B ORDER BY rnum)";
+					sql += " WHERE rnum BETWEEN ? AND ?";
+					
+					ps = conn.prepareStatement(sql);
+						
+					ps.setInt(1, paging.getStartNo()); 
+					ps.setInt(2, paging.getEndNo()); 
+					rs = ps.executeQuery();
+						
+					while(rs.next()) {
+						Board board = new Board();
+						
+						board.setBoardno(rs.getInt("boardno"));
+						board.setNickname(rs.getString("nickname"));
+						board.setTitle(rs.getString("title"));
+						board.setContent(rs.getString("content"));
+						board.setScheduleno(rs.getInt("scheduleno"));
+						board.setTeam(rs.getString("team"));
+						board.setInsertdate(rs.getDate("insertdate"));
+						board.setHit(rs.getInt("hit"));
+							
+						list.add(board);
+					}
+				} else {	//	축구 모든 팀 모든 지역 검색
+					String sql = "";
+					sql += "SELECT * FROM (";
+					sql += " SELECT rownum rnum, B.* FROM (";
+					sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+					sql += " where scheduleno in(";
+					sql += " select scheduleno from schedule";
+					sql += " where hometeam in("; 
+					sql += " select teamname from team where event = '2')";
+					sql += " )B ORDER BY rnum)";
+					sql += " WHERE rnum BETWEEN ? AND ?";
+					
+					ps = conn.prepareStatement(sql);
+						
+					ps.setInt(1, paging.getStartNo()); 
+					ps.setInt(2, paging.getEndNo()); 
+					rs = ps.executeQuery();
+						
+					while(rs.next()) {
+						Board board = new Board();
+						
+						board.setBoardno(rs.getInt("boardno"));
+						board.setNickname(rs.getString("nickname"));
+						board.setTitle(rs.getString("title"));
+						board.setContent(rs.getString("content"));
+						board.setScheduleno(rs.getInt("scheduleno"));
+						board.setTeam(rs.getString("team"));
+						board.setInsertdate(rs.getDate("insertdate"));
+						board.setHit(rs.getInt("hit"));
+							
+						list.add(board);
+					}
+				}
+			} else {
+				if("1".equals(event)) {	//	야구 모든 팀 선택 지역 검색
+					String sql = "";
+					sql += "SELECT * FROM (";
+					sql += " SELECT rownum rnum, B.* FROM (";
+					sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+					sql += " where scheduleno in(";
+					sql += " select scheduleno from schedule";
+					sql += " where hometeam in("; 
+					sql += " select teamname from team where event = '1'";
+					sql += " and region = ?)))B ORDER BY rnum)";
+					sql += " WHERE rnum BETWEEN ? AND ?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setString(1, region);
+					ps.setInt(2, paging.getStartNo()); 
+					ps.setInt(3, paging.getEndNo()); 
 
+					rs = ps.executeQuery();
+						
+					while(rs.next()) {
+						Board board = new Board();
+							
+						board.setBoardno(rs.getInt("boardno"));
+						board.setNickname(rs.getString("nickname"));
+						board.setTitle(rs.getString("title"));
+						board.setContent(rs.getString("content"));
+						board.setScheduleno(rs.getInt("scheduleno"));
+						board.setTeam(rs.getString("team"));
+						board.setInsertdate(rs.getDate("insertdate"));
+						board.setHit(rs.getInt("hit"));
+							
+						list.add(board);
+					}
+				} else {	//	축구 모든 팀 선택 지역 검색
+					String sql = "";
+					sql += "SELECT * FROM (";
+					sql += " SELECT rownum rnum, B.* FROM (";
+					sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+					sql += " where scheduleno in(";
+					sql += " select scheduleno from schedule";
+					sql += " where hometeam in("; 
+					sql += " select teamname from team where event = '2'";
+					sql += " and region = ?)))B ORDER BY rnum)";
+					sql += " WHERE rnum BETWEEN ? AND ?";
+					
+					ps = conn.prepareStatement(sql);
+					
+					ps.setString(1, region);
+					ps.setInt(2, paging.getStartNo()); 
+					ps.setInt(3, paging.getEndNo()); 
+
+					rs = ps.executeQuery();
+						
+					while(rs.next()) {
+						Board board = new Board();
+							
+						board.setBoardno(rs.getInt("boardno"));
+						board.setNickname(rs.getString("nickname"));
+						board.setTitle(rs.getString("title"));
+						board.setContent(rs.getString("content"));
+						board.setScheduleno(rs.getInt("scheduleno"));
+						board.setTeam(rs.getString("team"));
+						board.setInsertdate(rs.getDate("insertdate"));
+						board.setHit(rs.getInt("hit"));
+							
+						list.add(board);
+					}
+				}
+			}
+		} else {
+			if("all".equals(region)) {	//	선택 팀 모든 지역 검색
+				String sql = "";
+				sql += "SELECT * FROM (";
+				sql += " SELECT rownum rnum, B.* FROM (";
+				sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+				sql += " where scheduleno in(";
+				sql += " select scheduleno from schedule";
+				sql += " where (hometeam = ? or awayteam = ?)"; 
+				sql += " ))B ORDER BY rnum)";
+				sql += " WHERE rnum BETWEEN ? AND ?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, team);
+				ps.setString(2, team);
+				ps.setInt(3, paging.getStartNo()); 
+				ps.setInt(4, paging.getEndNo()); 
+
+				rs = ps.executeQuery();
+					
+				while(rs.next()) {
+					Board board = new Board();
+						
+					board.setBoardno(rs.getInt("boardno"));
+					board.setNickname(rs.getString("nickname"));
+					board.setTitle(rs.getString("title"));
+					board.setContent(rs.getString("content"));
+					board.setScheduleno(rs.getInt("scheduleno"));
+					board.setTeam(rs.getString("team"));
+					board.setInsertdate(rs.getDate("insertdate"));
+					board.setHit(rs.getInt("hit"));
+						
+					list.add(board);
+				}
+			} else {	//	선택 팀 선택 지역 검색
+				String sql = "";
+				sql += "SELECT * FROM (";
+				sql += " SELECT rownum rnum, B.* FROM (";
+				sql += " SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+				sql += " where scheduleno in(";
+				sql += " select scheduleno from schedule";
+				sql += " where hometeam in(select teamname from team";
+				sql += "  where region = ?) and";
+				sql += " (hometeam = ? or awayteam = ?)";
+				sql += " ))B ORDER BY rnum)";
+				sql += " WHERE rnum BETWEEN ? AND ?";
+				
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, region);
+				ps.setString(2, team);
+				ps.setString(3, team);
+				ps.setInt(4, paging.getStartNo()); 
+				ps.setInt(5, paging.getEndNo()); 
+
+				rs = ps.executeQuery();
+					
+				while(rs.next()) {
+					Board board = new Board();
+						
+					board.setBoardno(rs.getInt("boardno"));
+					board.setNickname(rs.getString("nickname"));
+					board.setTitle(rs.getString("title"));
+					board.setContent(rs.getString("content"));
+					board.setScheduleno(rs.getInt("scheduleno"));
+					board.setTeam(rs.getString("team"));
+					board.setInsertdate(rs.getDate("insertdate"));
+					board.setHit(rs.getInt("hit"));
+						
+					list.add(board);
+				}
+			}
+		}
+			
 		} catch (SQLException e){
 			e.printStackTrace();
 		} finally {
@@ -201,7 +406,7 @@ public class BoardDaoImpl implements BoardDao {
 			}
 		}
 
-		return viewBoard;
+		return list;
 	}
 
 

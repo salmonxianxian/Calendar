@@ -260,9 +260,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List selectBoardByTeamRegion(String event, String team, String region) {
-		// TODO Auto-generated method stub
-		return null;
+	public List selectBoardByTeamRegion(Paging paging, String event, String team, String region) {
+		
+		return boardDao.selectBoardByTeamRegion(paging, event, team, region);
 	}
 
 	
