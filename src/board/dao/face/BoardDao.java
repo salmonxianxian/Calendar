@@ -40,4 +40,10 @@ public interface BoardDao {
 	
 	//scheduleno로 insertdate?
 	public int scheduleno(String team, String gamedate);
+	
+	public List getScheduleno(String event, String team, String region);
+
+	public int getSelectCntAll(int scheduleno, String team);
+
+	public List searchBoard(Paging paging, String event, String team, String region);
 }
