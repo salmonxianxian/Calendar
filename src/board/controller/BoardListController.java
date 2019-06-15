@@ -25,11 +25,7 @@ public class BoardListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// 요청 파라미터에서 curPage 얻어오기
-		Paging paging = boardService.getCurPage(req);
-
-		// model로 Paging 객체 넣기
-		req.setAttribute("paging", paging);
+		
 //		System.out.println(paging);
 
 		// 상세 조회
@@ -54,14 +50,26 @@ public class BoardListController extends HttpServlet {
 			region = "all";
 		}
 
+		// 요청 파라미터에서 curPage 얻어오기
+		Paging paging;
+		
+		if(event!=null) {	//	상세검색을 했을 경우
+			paging = boardService.getSelectCurPage(req, event, team, region);
+		} else {	//	상세검색 안했을 경우 원래대로 출력
+			paging =  boardService.getCurPage(req);
+		}
+		
 		// 게시판 목록 조회
 		List list;
-		if(event!=null) {	//	상세검색 안했을 경우 원래대로 출력
+		if(event!=null) {	//	상세검색을 했을 경우
 			list = boardService.selectBoardByTeamRegion(paging, event, team, region);
-		} else {	//	상세검색을 했을 경우
+		} else {	//	상세검색 안했을 경우 원래대로 출력
 			list = boardService.getList(paging);
 		}
 
+		// model로 Paging 객체 넣기
+		req.setAttribute("paging", paging);
+		
 		// MODEL로 결과 넣기
 		req.setAttribute("list", list);
 

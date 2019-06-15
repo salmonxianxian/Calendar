@@ -70,5 +70,8 @@ public interface BoardService {
 		//	게시글 상세검색. team과 region을 통해 원하는 직관경기 가는 게시글 검색
 	public List selectBoardByTeamRegion(Paging paging, String event, String team, String region);
 
+		//	요청파라미터 
+	public Paging getSelectCurPage(HttpServletRequest req, String event, String team, String region);
+
 
 }

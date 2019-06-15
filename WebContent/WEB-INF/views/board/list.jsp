@@ -7,14 +7,6 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <script type="text/javascript">
-$(document).ready(function(){
-	//글작성 버튼 누르면 이동
-	$("#btnWrite").click(function(){
-		location.href="/board/write";
-	});
-	
-});
-
 
 //라디오버튼클릭시 option 바뀜
 //v=1 : 야구, 2 : 축구
@@ -31,9 +23,16 @@ function setDisplay(v,idB,idS,Brg,Srg) {
 			document.getElementById(idS).style.display="block";
 			document.getElementById(Brg).style.display="none";
 			document.getElementById(Srg).style.display="block";
-}
+		}
+};
 
-
+$(document).ready(function(){
+	//글작성 버튼 누르면 이동
+	$("#btnWrite").click(function(){
+		location.href="/board/write";
+	});
+	
+});
 
 </script>
 
