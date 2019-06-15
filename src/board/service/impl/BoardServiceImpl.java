@@ -241,6 +241,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
+//----------------------------------------------------------------------------------------------
 	@Override
 	public List selectBoardByTeamRegion(String event, String team, String region) {
 		// TODO Auto-generated method stub

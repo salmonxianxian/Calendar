@@ -38,6 +38,18 @@ function changes(value) {
 }
 
 
+$(document).ready(function(){
+	  $('.more2').click(function(){
+	    if($('.more2').hasClass('more2')){
+	       $('.more2').addClass('close').removeClass('more2');
+	       $('.listnick').css('visibility', 'visible');
+	    }else if($('.close').hasClass('close')){
+	       $('.close').addClass('more2').removeClass('close');  
+	       $('.listnick').css('visibility', 'hidden');
+	    }
+	  });
+	});
+
 
 </script>
 
@@ -77,6 +89,32 @@ table, th{
  	text-overflow: ellipsis;
 
 }
+
+.listnick {
+  font-size:13px;
+  position:absolute; 
+  top:230px;
+  left: 450px;
+/*   right: 320px; */
+  width:150px; 
+  height:80px; 
+  background: #dcdcdc;
+  visibility:hidden;
+}
+
+.more2 {
+	display: inline;
+	width: 80px;
+	hight: 20px;
+	background-position: 80px -78px;
+	
+}
+
+.more2:hover, .close:hover {
+  cursor:pointer;
+}
+
+
 
 </style>
 
@@ -185,7 +223,19 @@ table, th{
  <tr>
  
  	<td>${i.boardno }</td>
- 	<td>${i.nickname }<img src="/logo/semi_default.png" width="30px" height="20px"></td>
+ 	<td>${i.nickname }
+ 	<span style="float:right;" class="more2">
+	<span class="blind">
+	<img src="/logo/semi_default.png" width="30px" height="20px">
+	</span>
+	</span>
+	
+	<div class="listnick">
+  	<ul class="list">
+  	<li> 프로필 </li>
+  	</ul>
+	</div>
+ 	</td>
  	<td><a href="/board/view?boardno=${i.boardno}">${i.title }</a></td>
 <%--  	<td style="text-overflow:ellipsis; overflow:hidden">${i.content }</td> --%>
  	<td>${i.scheduleno }</td>

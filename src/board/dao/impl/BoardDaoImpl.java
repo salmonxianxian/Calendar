@@ -346,16 +346,17 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	//---------------------------------------------
-//	@Override
-//	public List getList(String event, String team, String region) {
-//		
-//		
-//		
-//		return null;
-//	}
+	@Override
+	public List getList(String event, String team, String region) {
+		
+		
+		
+		return null;
+	}
 
 	
-	
+
+//----------------------------------------------------------------------------------------------	
 	// 내가 쓴 글 보기 
 	@Override
 	public void myBoard(Board board) {
@@ -385,6 +386,8 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
+//-----------------------------------------------------------------------
+	//응원하는팀 
 	@Override
 	public int scheduleno(String team, String gamedate) {
 		
