@@ -20,7 +20,7 @@
 <style type="text/css">
 #header {
 	text-align: left;
-	background: #828282;
+	background: #E1FFE1;
 	height: 80px;
 	width: 1200px;
 	
@@ -30,7 +30,7 @@
 #footer {
 	text-align: center;
 	display: table;
-	background: #828282;
+	background: #E1FFE1;
 	height: 60px;
 	width: 1200px;
 	
@@ -79,12 +79,13 @@
 .board {
   font-size:13px;
   position:absolute; 
-  top:60px;
-  right: 320px;
+  top:65px;
+  left: 1050px;
+/*   right: 320px; */
   width:150px; 
   height:80px; 
   background: #dcdcdc;
-  visibility:hidden; 
+  visibility:hidden;
 }
 
 .list {
