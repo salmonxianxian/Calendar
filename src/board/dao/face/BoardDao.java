@@ -40,4 +40,5 @@ public interface BoardDao {
 	
 	//scheduleno로 insertdate?
 	public int scheduleno(String team, String gamedate);
+
 }

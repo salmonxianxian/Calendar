@@ -120,8 +120,8 @@ table, tr{
 }
 
 #vbtn {
-	position: fixed;
-	right: 50%;
+ 	position: absolute; 
+	text-align: center
 }
 
 
@@ -173,13 +173,14 @@ table, tr{
 
 #reply {
 	width: 1200px;
-	position: fixed;
+/* 	position: fixed; */
 }
 
 #replylist{
 	width: 1200px;
 	text-align: center;
 }
+
 
 
 </style>
@@ -234,8 +235,7 @@ table, tr{
 
 
 
-<table class="table table-bordered">
-<!-- table table-bordered -->
+<table class="table table-bordered" id="view">
 <tr>
 <td class="success" style="text-align: center">글번호</td><td colspan="2">${viewBoard.boardno }</td>
 <td class="success" style="text-align: center">닉네임</td><td colspan="2">${viewBoard.nickname }</td>
@@ -255,8 +255,7 @@ table, tr{
 <td class="success" style="text-align: center">제목</td><td colspan="7">${viewBoard.title }</td>
 </tr>
 
-<tr><td class="success" style="text-align: center" colspan="8">본문</td></tr>
-
+<tr><td class="success" style="text-align: center" colspan="8" >본문</td></tr>
 <tr><td colspan="8">${viewBoard.content }</td></tr>
 
 
@@ -264,9 +263,6 @@ table, tr{
 </div>
 </div>
 <br><br><br>
-
-
-
 
 <!---------------------댓글--------------------------------------------------->
 <div>
@@ -290,7 +286,7 @@ table, tr{
 
 	<input type="text" size="10" class="form-control" id="replyWriter" value="${sessionScope.nickname }" readonly="readonly"/>
 	<textarea rows="2" cols="100" class="form-control" id="reContent" ></textarea>
-	<button id="btnReplyInsert" class="btn" >입력</button>
+	<button id="btnReplyInsert" class="btn btn-warning" >입력</button>
 </div>	<!-- 댓글 입력 end -->
 </c:if>
 

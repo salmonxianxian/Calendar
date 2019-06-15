@@ -11,6 +11,7 @@ import java.util.List;
 import board.dao.face.BoardDao;
 import dbutil.DBConn;
 import dto.Board;
+import dto.Icon;
 import dto.Schedule;
 import util.Paging;
 
@@ -390,7 +391,7 @@ public class BoardDaoImpl implements BoardDao {
 		int scheduleno = 0;
 		
 		String sql = "";
-		sql += "SELECT schduleno FROM schedule";
+		sql += "SELECT scheduleno FROM schedule";
 		sql += " WHERE gamedate=?";
 		sql += " And (hometeam=? or awayteam=?)";
 		
@@ -413,4 +414,9 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return scheduleno;
 	}
+
+
+
+
+	
 }

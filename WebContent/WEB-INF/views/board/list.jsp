@@ -66,10 +66,18 @@ table, th{
 	text-align: center;
 }
 
-#listtable {
-	margin-left: auto;
-	margin-right: auto;
+/* #listtable { */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* } */
+
+/* 본문 내용 몇글자만 보이고 가리기 */
+#qhsans {
+	overflow: hidden;
+ 	text-overflow: ellipsis;
+
 }
+
 </style>
 
 <!-- <script>
@@ -78,8 +86,8 @@ table, th{
 </script> -->
 
 
-
-<div style="width:200px; background: #b4b4b4; float:left; height:660px;"> 
+<!-- 사이드바 -->
+<div style="width:200px; background: #AAEBAA; float:left; height:660px;"> 
 <br><br><br>
 <div style="text-align: center;"><label>상세검색</label></div><br><br>
 
@@ -96,9 +104,6 @@ table, th{
 <br>
 
 <select name='sel' >
-<%-- <c:forEach items="${list }" var="a"> --%>
-<%-- <option value="${a.title }">${a.title}</option> --%>
-<%-- </c:forEach> --%>
 <option value=''>★선택하세요★</option>
 <option value='1'>기아타이거즈</option>
 <option value='2'>두산베어스</option>
@@ -161,15 +166,15 @@ table, th{
 <hr>
 
 <table border="1" style="margin-left: auto;
-	margin-right: auto;">
+	margin-right: auto;" style="table-layout:fixed;">
 <thead>
 	<tr>
 		<th style="width: 5%;">번호</th>
-		<th style="width: 10%;">닉네임</th>
-		<th style="width: 10%;">제목</th>
-		<th style="width: 35%;">내용</th>
-		<th style="width: 10%;">스케줄</th>
-		<th style="width: 10%;">경기팀</th>
+		<th style="width: 20%;">닉네임</th>
+		<th style="width: 40%;">제목</th>
+<!-- 		<th style="width: 35%;">내용</th> -->
+		<th style="width: 5%;">스케줄</th>
+		<th style="width: 10%;">응원하는팀</th>
 		<th style="width: 15%;">작성일</th>
 		<th style="width: 5%;">조회수</th>
 	</tr>
@@ -180,9 +185,9 @@ table, th{
  <tr>
  
  	<td>${i.boardno }</td>
- 	<td>${i.nickname }</td>
+ 	<td>${i.nickname }<img src="/logo/semi_default.png" width="30px" height="20px"></td>
  	<td><a href="/board/view?boardno=${i.boardno}">${i.title }</a></td>
- 	<td>${i.content }</td>
+<%--  	<td style="text-overflow:ellipsis; overflow:hidden">${i.content }</td> --%>
  	<td>${i.scheduleno }</td>
  	<td>${i.team }</td>
  	<td><fmt:formatDate value="${i.insertdate }" pattern="yyyy-MM-dd"/></td>
