@@ -391,9 +391,8 @@ public class BoardDaoImpl implements BoardDao {
 		
 		String sql = "";
 		sql += "SELECT schduleno FROM schedule";
-		sql += " WHERE insertdate=?";
-		sql += " And hometeam=?";
-		sql += " And awayteam=?";
+		sql += " WHERE gamedate=?";
+		sql += " And (hometeam=? or awayteam=?)";
 		
 		try {
 			ps=conn.prepareStatement(sql);
@@ -402,10 +401,15 @@ public class BoardDaoImpl implements BoardDao {
 			ps.setString(2, team);
 			ps.setString(3, team);
 			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				scheduleno = rs.getInt(1);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		
 		return scheduleno;
 	}
