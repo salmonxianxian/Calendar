@@ -292,7 +292,13 @@ table, th{
  	<td><a href="/board/view?boardno=${i.boardno}">${i.title }</a></td>
 <%--  	<td style="text-overflow:ellipsis; overflow:hidden">${i.content }</td> --%>
  	<td>${getScheDate.get(i.scheduleno) }</td>
- 	<td>${i.team }</td>
+ 	<!-- 응원하는 팀 icon -->
+ 	<td>
+		<img src="/logo/${icon.get(i.team) }"
+		style="width: 21px; height: 21px;"/>
+		${i.team }
+		<br>
+ 	</td>
  	<td><fmt:formatDate value="${i.insertdate }" pattern="yyyy-MM-dd"/></td>
  	<td>${i.hit }</td>
  </tr>
