@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 #modal .modal_content {
   width:300px;
-  margin:auto;
+  margin-left:420px;
   padding:20px 10px;
   background:#fff;
   border:2px solid #666;
@@ -106,10 +106,10 @@ $(document).ready(function() {
        </table>
        
        <br><br>
-       <div>
-          <input type="submit" style="text-align: center" value="제재"/>
+       <div class="text-center">
+          <input type="submit" style="text-align: center" class="btn btn-danger" value="제재"/>
            &nbsp;&nbsp;&nbsp;
-          <input type="button" id="modal_close_btn" style="text-align: center" value="취소"/>
+          <input type="button" id="modal_close_btn" style="text-align: center" class="btn btn-default" value="취소"/>
     
       </div>
    </form>
@@ -156,10 +156,10 @@ $(document).ready(function() {
 </div>
 
 
-<div id="vbtn">   
-   <span><button id="btnList" class="btn btn-primary">목록</button></span>
+<div id="vbtn" style="margin-left: 500px">   
+   <span><button id="btnList" class="btn btn-primary" >목록</button></span>
    
-   <span><button id="modal_open_btn" class="btn btn-warning">영구 탈퇴</button></span>
+   <span><button id="modal_open_btn" class="btn btn-danger">영구 탈퇴</button></span>
 
 </div>
 

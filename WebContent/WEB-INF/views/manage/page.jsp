@@ -50,18 +50,18 @@ table, th{
 
 </style>
 
-<div style="width:200px; background: #B4B4B4; float:left; height:660px;"> 
+<div class="bg-info" style="width:200px; float:left; height:660px;"> 
 
 <div id="maching" style="margin-center: auto;">
 	<br>
 	<br>
-	<h2 >목 록</h2>
+	<div class="text-muted"><h2 >목 록</h2></div>
 	<br>
 	<br>
-	<h3 style="font-size:1.5em;" ><a href="/manage/page">관리자 페이지</a></h3>
+	<h3><a href="/manage/page" class="text-danger">관리자 페이지</a></h3>
 	<br>
 	<br>
-	<h3 style="font-size:1.5em;" ><a href="/manage/member">회원 목록 페이지</a></h3>
+	<h3><a href="/manage/member" class="text-warning">회원 목록 페이지</a></h3>
 	</div>
 </div>
 
