@@ -65,7 +65,7 @@ $(document).ready(function() {
  	width: 1200px;
 }
 
-.pwChk {
+#pwChk {
  	text-align: center;
  	width: 1200px;
 }
@@ -92,7 +92,7 @@ $(document).ready(function() {
 
 <div id="wrapper">
 
-<div class="pwChk">
+<div id="pwChk">
 <table align="center">
 	<tr>
 		<td>비밀번호 입력 : </td>

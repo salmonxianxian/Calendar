@@ -65,7 +65,6 @@ table, th{
    <h3><a href="/manage/member" class="text-warning">회원 목록 페이지</a></h3>
    </div>
 </div>
-</div>
 
 <div class="center" style="width:1200px; height: 640px;">
 
