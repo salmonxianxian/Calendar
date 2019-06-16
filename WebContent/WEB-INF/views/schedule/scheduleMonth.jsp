@@ -18,7 +18,7 @@
 }
 
 .schedule {
-	height : 200px;
+	height : 220px;
 	text-align: center;
 	font-size: 13px;
 	
@@ -55,6 +55,11 @@
 }%>
 
 <script type="text/javascript">	//	종목 선택에 따라 팀, 지역 다르게 출력
+
+//라디오버튼클릭시 option 바뀜
+//v=1 : 야구, 2 : 축구
+//idB = 야구 팀, Brg = 야구 팀 지역
+//idS = 축구 팀, Srg = 축구 팀 지역
 	function setDisplay(v,idB,idS,Brg,Srg) {
 		if(v=="1") {
 			document.getElementById(idB).style.display="block";
@@ -73,7 +78,7 @@
 </script>
 
 <!-- 좌측 레이아웃 -->
-<div style="width:200px; background: #b4b4b4; float:left; height:1510px; text-align: center">
+<div style="width:200px; background: #b4b4b4; float:left; height:1670px; text-align: center">
 <br>
 <br>
 <br>
@@ -192,7 +197,7 @@
 </form>
 </div>
 
-<div style="width:1200px; height: 1510px;">
+<div style="width:1200px; height: 1660px;">
 <br>
 <br>
 <br>
@@ -257,7 +262,7 @@
 	</tr>
 	<% for(int i=1; i<=lastDate+startDay; i++) { /* 달력 생성을 위한 반복문 */
 		if(i%7==1) { %>
-			<tr style="height: 230px;">
+			<tr style="height: 250px;">
 		<% } %>
 		<td>
 		<% if(i>startDay) { %>	<!-- 달력 1일 날짜 위치에서 시작하기 위한 조건문 -->
