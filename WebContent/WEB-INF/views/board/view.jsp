@@ -343,9 +343,9 @@ table, tr{
 <!-- 로그인 안한상태 -->
 <c:if test="${not login }">
 
-&nbsp&nbsp&nbsp<strong>로그인이 필요합니다</strong><br>
-&nbsp&nbsp&nbsp<button onclick='location.href="/login";'>로그인</button>
-&nbsp&nbsp&nbsp<button onclick='location.href="/signup";'>회원가입</button>
+&nbsp&nbsp&nbsp<strong>댓글을 작성하시려면 로그인이 필요합니다</strong><br>
+<!-- &nbsp&nbsp&nbsp<button onclick='location.href="/login";'>로그인</button> -->
+<!-- &nbsp&nbsp&nbsp<button onclick='location.href="/signup";'>회원가입</button> -->
 
 </c:if>
 
