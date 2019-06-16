@@ -81,17 +81,18 @@
 .board {
   font-size:13px;
   position:absolute; 
-  top:60px;
-  right: 320px;
+  top:65px;
+  left: 1050px;
+/*   right: 320px; */
   width:150px; 
   height:53px; 
   background: #dcdcdc;
-  visibility:hidden; 
+  visibility:hidden;
 }
 
 .list {
   float:left;
-  position: fixed;
+  position: absolute;
 }
 
 .list li {
@@ -217,7 +218,7 @@ $(document).ready(function(){
 
 <div id="header">
 
-	<span style="font-size:3.5em;" id="h"><a href="/main">직관의 민족</a></span>
+	<span style="font-size:3.5em;" id="h"><a href="/main">직관의민족</a></span>
 	<span>
 	<button type="button" onclick='location.href="/schedule/week";'>일정</button></span>
 	<span>

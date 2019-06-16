@@ -32,7 +32,7 @@ public interface BoardDao {
 	//게시글 삭제
 	public void delete(Board board);
 
-//	public List getList(String event, String team, String region);
+	public List getList(String event, String team, String region);
 
 	
 	// 내가 쓴 글 보기
@@ -40,4 +40,16 @@ public interface BoardDao {
 	
 	//scheduleno로 insertdate?
 	public int scheduleno(String team, String gamedate);
+	
+	public List getScheduleno(String event, String team, String region);
+
+	public int getSelectCntAll(int scheduleno, String team);
+
+	public List searchBoard(Paging paging, String event, String team, String region);
+
+	public List selectBoardByScheNo(Paging paging, int sno);
+
+	public int getSelectbyScheNo(int sno);
+
+	public List getSchedule();
 }
