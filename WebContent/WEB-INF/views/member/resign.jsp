@@ -70,6 +70,7 @@ $(document).ready(function() {
  	width: 1200px;
 }
 
+
 </style>
   
   
@@ -110,7 +111,10 @@ $(document).ready(function() {
 <div id="resignreason" align="center">
 탈퇴사유<br>
 <textarea rows="10" cols="50" id="reason" name="reason"></textarea><br>
+
+<div>
 <button>탈퇴하기</button> <button type="button" onClick="location.href='/member/resign'">취소</button>
+</div>
 </div>
 </form>
 
