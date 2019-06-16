@@ -37,24 +37,53 @@ $(document).ready(function() {
 });
 </script>
 
-<h1>관리자 페이지</h1>
+<style type="text/css">
+table, th{
+	text-align: center;
+	
+}
+
+.maching { /* 매칭게시판 가운데 정렬 */
+ 	text-align: center;
+ 	width: 1200px;
+}
+
+</style>
+
+<div style="width:200px; background: #B4B4B4; float:left; height:660px;"> 
+
+<div id="maching" style="margin-center: auto;">
+	<br>
+	<br>
+	<h2 >목 록</h2>
+	<br>
+	<br>
+	<h3 style="font-size:1.5em;" ><a href="/manage/page">관리자 페이지</a></h3>
+	<br>
+	<br>
+	<h3 style="font-size:1.5em;" ><a href="/manage/member">회원 목록 페이지</a></h3>
+	</div>
+</div>
+
+<div class="center" style="width:1200px; height: 640px;">
+
+<div class="maching"><h1>관리자 페이지</h1></div>
 <hr>
-
-<table class="table table-striped table-hover table-condensed">
-
+<table border="1" style="margin-left: auto;
+	margin-right: auto;" style="table-layout:fixed;">
 <thead>
 	<tr>
-		<th style="width: 10%">선택</th>
-		<th style="width: 10%">글번호</th>
-		<th style="width: 45%">제목</th>
-		<th style="width: 15%">작성자</th>
-		<th style="width: 20%">작성일</th>
+		<th style="width: 5%">선택</th>
+		<th style="width: 5%">글번호</th>
+		<th style="width: 20%">제목</th>
+		<th style="width: 10%">작성자</th>
+		<th style="width: 10%">작성일</th>
 	</tr>
 </thead>
-</table>
+
 
 <form name=chk method="post" action="delete.jsp">
-<table>
+
 <tbody>
 <c:forEach items="${list }" var="i">
 	<tr>
@@ -64,24 +93,24 @@ $(document).ready(function() {
 		<td>${i.nickname }</td>
 		<td><fmt:formatDate value="${i.insertdate }" pattern="yyyy-MM-dd" /></td>
 	</tr>
+	
 </c:forEach>
 </tbody>
-</table>
 </form>
-
-
+</table>
 <div id="pagingBox">
 <c:import url="/WEB-INF/views/layout/managePaging.jsp" />
-
-
 </div>
 
 <div class="text-center">	
 	
 	<button id="btnDelete" class="btn btn-danger">삭제</button>
 	
-	
 </div>
+
+</div>
+
+
 
 
 

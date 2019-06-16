@@ -21,7 +21,7 @@ public class ManageGetoutDaoImpl implements ManageGetoutDao{
       
       String sql = "";
       sql += "INSERT INTO getout(getoutid, reason, explain)";
-      sql += " VALUE(? , ?, ?)";
+      sql += " VALUES(? , ?, ?)";
       
       
       try {
