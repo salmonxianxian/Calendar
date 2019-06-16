@@ -24,7 +24,7 @@ public class ManageDaoImpl implements ManageDao {
 		
 		System.out.println(paging.toString());
 		
-		//게시글 목록 조회쿼리
+		//寃뚯떆湲� 紐⑸줉 議고쉶荑쇰━
 		String sql = "";
 		sql += "SELECT * FROM (";
 		sql += " SELECT rownum rnum, B.* FROM (";
@@ -50,7 +50,7 @@ public class ManageDaoImpl implements ManageDao {
 				
 				board.setBoardno(rs.getInt("boardno"));
 				board.setTitle(rs.getString("title"));
-				board.setUserid(rs.getString("nickname"));
+				board.setNickname(rs.getString("nickname"));
 				board.setInsertdate(rs.getDate("Insertdate"));
 				
 				System.out.println(board.toString());
@@ -61,7 +61,7 @@ public class ManageDaoImpl implements ManageDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				// 자원 해제
+				// �옄�썝 �빐�젣
 				if (rs != null)
 					rs.close();
 				if (ps != null)
@@ -78,7 +78,7 @@ public class ManageDaoImpl implements ManageDao {
 	@Override
 	public int selectCntAll() {
 
-		// 전체 게시글 수 조회 쿼리
+		// �쟾泥� 寃뚯떆湲� �닔 議고쉶 荑쇰━
 		String sql = "";
 		sql += "SELECT count(*)";
 		sql += " FROM board";
@@ -98,7 +98,7 @@ public class ManageDaoImpl implements ManageDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				// 자원 해제
+				// �옄�썝 �빐�젣
 				if (rs != null)
 					rs.close();
 				if (ps != null)
@@ -114,7 +114,7 @@ public class ManageDaoImpl implements ManageDao {
 	@Override
 	public Board selectBoardByBoardno(Board viewBoard) {
 		
-		// 게시글 조회쿼리
+		// 寃뚯떆湲� 議고쉶荑쇰━
 		String sql = "";
 		sql += "SELECT boardno, title, nickname, content, scheduleno, insertdate FROM board";
 		sql += " WHERE boardno = ?";
@@ -131,7 +131,7 @@ public class ManageDaoImpl implements ManageDao {
 				
 				viewBoard.setBoardno(rs.getInt("boardno"));
 				viewBoard.setTitle(rs.getString("title"));
-				viewBoard.setUserid(rs.getString("nickname"));
+				viewBoard.setNickname(rs.getString("nickname"));
 				viewBoard.setContent(rs.getString("content"));
 				viewBoard.setScheduleno(rs.getInt("scheduleno"));
 				viewBoard.setInsertdate(rs.getDate("Insertdate"));

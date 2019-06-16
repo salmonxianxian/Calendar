@@ -16,17 +16,17 @@ public class ManageMemberServiceImpl implements ManageMemberService {
 	
 	@Override
 	public Paging getCurPage(HttpServletRequest req) {
-		// 전달파라미터 curPage 파싱
+		// �쟾�떖�뙆�씪誘명꽣 curPage �뙆�떛
 		String param = req.getParameter("curPage");
 		int curPage = 0;
 		if (param != null && !"".equals(param)) {
 			curPage = Integer.parseInt(param);
 		}
 
-		// 전체 게시글 수
+		// �쟾泥� 寃뚯떆湲� �닔
 		int totalCount = managememberDao.selectCntAll();
 
-		// 페이징 객체 생성
+		// �럹�씠吏� 媛앹껜 �깮�꽦
 		Paging paging = new Paging(totalCount, curPage);
 //		System.out.println(paging); //TEST
 
@@ -56,21 +56,19 @@ public class ManageMemberServiceImpl implements ManageMemberService {
 
 
 	@Override
-	public int getReply(HttpServletRequest req) {
+	public int getReply(String nickname) {
 		
-		String reply = req.getParameter("replyno");
 		
-		return managememberDao.cntReply(reply);
+		return managememberDao.cntReply(nickname);
 	}
 
 
 
 	@Override
-	public int getcntBoard(HttpServletRequest req) {
+	public int getcntBoard(String nickname) {
 		
-		String cntBoard = req.getParameter("nickname");
 		
-		return managememberDao.cntBoard(cntBoard);
+		return managememberDao.cntBoard(nickname);
 	}
 	
 	

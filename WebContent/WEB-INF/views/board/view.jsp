@@ -11,6 +11,11 @@
 <script type="text/javascript"
 src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
+
+<!------------------------------------------------------------------------------------------------------------>
+
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -33,11 +38,7 @@ $(document).ready(function() {
 	//댓글 입력
 	$("#btnReplyInsert").click(function(){
 		
-		//console.log($("#replynickname").val());
-		//console.log($("#replyreContent").val());
-		
-		//게시글번호
-		//${viewBoard.boardno}
+		console.log($("#replyWriter").val());
 		
 		$form=$("<form>").attr({
 			action:"/reply/insert",
@@ -57,8 +58,8 @@ $(document).ready(function() {
 				})
 		
 		).append(
-				$("<textarea>").attr("name","content")
-				.css("display","none").text($("#reContent").val())
+				$("<textarea>").attr("name","recontent")
+				.css("display","none").text($("#reContent").val()) //입력칸에 퍼렇게 색 뜸
 				);
 		
 		$(document.body).append($form);
@@ -79,7 +80,7 @@ $(document).ready(function() {
 			if(data.success) {
 				$("[data-replyno='"+replyno+"']").remove();
 			} else {
-				alert("댓글삭제실패");
+				alert("댓글 삭제를 실패하였습니다.");
 			}
 		}
 		
@@ -91,7 +92,27 @@ $(document).ready(function() {
 	
 	}
 
+	//회원아이콘 클릭 리스트
+	$(document).ready(function(){
+		  $('.more1').click(function(){
+		    if($('.more1').hasClass('more1')){
+		       $('.more1').addClass('close').removeClass('more1');
+		       $('.viewnick').css('visibility', 'visible');
+		    }else if($('.close').hasClass('close')){
+		       $('.close').addClass('more1').removeClass('close');  
+		       $('.viewnick').css('visibility', 'hidden');
+		    }
+		  });
+		});
+
+	
+	
+	
+	
+	
 </script>
+
+<!------------------------------------------------------------------------------------------------------------>
 
 <style>
 
@@ -120,8 +141,8 @@ table, tr{
 }
 
 #vbtn {
-	position: fixed;
-	right: 50%;
+ 	position: absolute; 
+	text-align: center
 }
 
 
@@ -173,7 +194,7 @@ table, tr{
 
 #reply {
 	width: 1200px;
-	position: fixed;
+/* 	position: fixed; */
 }
 
 #replylist{
@@ -181,14 +202,40 @@ table, tr{
 	text-align: center;
 }
 
+.viewnick {
+  font-size:13px;
+  position:absolute; 
+  top:130px;
+  left: 780px;
+/*   right: 320px; */
+  width:150px; 
+  height:80px; 
+  background: #dcdcdc;
+  visibility:hidden;
+}
+
+.more1 {
+	display: inline;
+	width: 80px;
+	hight: 20px;
+	background-position: 80px -78px;
+	
+}
+
+.more1:hover, .close:hover {
+  cursor:pointer;
+}
 
 </style>
+
+<!------------------------------------------------------------------------------------------------------------>
 
 <div class = "contents">
 
 <div><h1 class="maching">직관 매칭 게시판</h1></div>
 
 
+<!------------------------------------------------------------------------------------------------------------>
 
 <div class="clearfix">
 
@@ -231,14 +278,33 @@ table, tr{
     
 </div>
 
+<!------------------------------------------------------------------------------------------------------------>
 
 
-
-<table class="table table-bordered">
-<!-- table table-bordered -->
+<table class="table table-bordered" id="view">
 <tr>
 <td class="success" style="text-align: center">글번호</td><td colspan="2">${viewBoard.boardno }</td>
-<td class="success" style="text-align: center">닉네임</td><td colspan="2">${viewBoard.nickname }</td>
+<td class="success" style="text-align: center">
+닉네임</td><td colspan="2">${viewBoard.nickname }
+
+<span style="float:right;" class="more1">
+	<span class="blind">
+	<img src="/logo/semi_default.png" width="30px" height="20px">
+	</span>
+	</span>
+	
+	<div class="viewnick">
+  	<ul class="list">
+  	<li> 프로필 </li>
+  	</ul>
+	</div>
+
+
+<!------------------------------------------------------------------------------------------------------------>
+
+
+
+</td>
 <td class="success" style="text-align: center">응원하는팀</td><td colspan="2">${viewBoard.team }</td>
 
 </tr>
@@ -255,8 +321,7 @@ table, tr{
 <td class="success" style="text-align: center">제목</td><td colspan="7">${viewBoard.title }</td>
 </tr>
 
-<tr><td class="success" style="text-align: center" colspan="8">본문</td></tr>
-
+<tr><td class="success" style="text-align: center" colspan="8" >본문</td></tr>
 <tr><td colspan="8">${viewBoard.content }</td></tr>
 
 
@@ -264,9 +329,6 @@ table, tr{
 </div>
 </div>
 <br><br><br>
-
-
-
 
 <!---------------------댓글--------------------------------------------------->
 <div>
@@ -288,10 +350,9 @@ table, tr{
 <!-- 댓글입력 -->
 <div class="form-inline text-center"  id="reply">
 
-	<input type="text" size="10" class="form-control" id="replyWriter" value="${nickname }" readonly="readonly"/>
-	<input type="text" size="120" class="form-control" id="replyContent"/>
-<!-- 	<textarea rows="2" cols="100" class="form-control" id="replyContent" ></textarea> -->
-	<button id="btnReplyInsert" class="btn" >입력</button>
+	<input type="text" size="10" class="form-control" id="replyWriter" value="${sessionScope.nickname }" readonly="readonly"/>
+	<textarea rows="2" cols="100" class="form-control" id="reContent" ></textarea>
+	<button id="btnReplyInsert" class="btn btn-warning" >입력</button>
 </div>	<!-- 댓글 입력 end -->
 </c:if>
 
@@ -306,8 +367,8 @@ table, tr{
 <tr>
 	<th style="width: 5%;">번호</th>
 	<th style="width: 10%;">닉네임</th>
-	<th style="width: 10%;">게시글번호</th>
-	<th style="width: 75%;">댓글</th>
+	<th style="width: 65%;">댓글</th>
+	<th style="width: 20%;">작성일</th>
 </tr>
 </thead>
 
@@ -317,17 +378,15 @@ table, tr{
 
 <tr data-replyno="${reply.replyno }">
 
-	<td>${reply.nickname }</td>
-	
-	<c:forEach items="${list }" var="board">
-	<td>${board.boardno }</td>
-	</c:forEach>
-	
+	<td>${reply.rnum }</td>
+	<td>${reply.nickname }<img src="/logo/semi_default.png" width="30px" height="20px"></td>
 	<td>${reply.recontent }</td>
+	<td><fmt:formatDate value="${reply.insertdate }" /></td>
 	
-	<c:if test="${reply.nickname == sessionScope.sessionNickname}">
+	<td>	<c:if test="${sessionScope.nickname eq reply.nickname}">
 		<button class="btn btn-danger btn-sm" onclick="deleteReply(${reply.replyno });">삭제</button>
 		</c:if>
+	</td>
 </tr>
 
 </c:forEach>

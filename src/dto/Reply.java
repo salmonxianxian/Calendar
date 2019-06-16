@@ -4,58 +4,89 @@ import java.util.Date;
 
 public class Reply {
 
+	private int rnum;
 	private int replyno;
 	private String nickname;
 	private int boardno;
-	private String replyContent;
+	private String recontent;
 	private Date insertdate;
+	
 	
 	@Override
 	public String toString() {
-		return "Comment [replyno = " + replyno
-				+ ", boardno = " + boardno + ", nickname = " + nickname
-				+ ", replyContent = " + replyContent + ", insertdate = " + insertdate 
-				+ ", getClass() = " + getClass() + ", hashCode() = " + hashCode()
-				+ ", toString() = " + super.toString() + "]";
+		return "Reply [rnum=" + rnum + ", replyno=" + replyno + ", nickname=" + nickname + ", boardno=" + boardno
+				+ ", recontent=" + recontent + ", insertdate=" + insertdate + "]";
 	}
-	
+
+
+	public int getRnum() {
+		return rnum;
+	}
+
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
+
 	public int getReplyno() {
 		return replyno;
 	}
 
-	public void setReplyno(int replyNo) {
-		this.replyno = replyNo;
+
+	public void setReplyno(int replyno) {
+		this.replyno = replyno;
 	}
 
-	public int getBoardno() {
-		return replyno;
-	}
-
-	public void setBoardno(int boardNo) {
-		this.boardno = boardNo;
-	}
 
 	public String getNickname() {
 		return nickname;
 	}
 
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
-	public String getReplyContent() {
-		return replyContent;
+
+	public int getBoardno() {
+		return boardno;
 	}
 
-	public void setReplyContent(String content) {
-		this.replyContent = content;
+
+	public void setBoardno(int boardno) {
+		this.boardno = boardno;
 	}
+
+
+	public String getRecontent() {
+		return recontent;
+	}
+
+
+	public void setRecontent(String recontent) {
+		this.recontent = recontent;
+	}
+
 
 	public Date getInsertdate() {
 		return insertdate;
 	}
 
+
 	public void setInsertdate(Date insertdate) {
 		this.insertdate = insertdate;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

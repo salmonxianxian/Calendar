@@ -5,14 +5,22 @@
 
  <c:import url="/WEB-INF/views/layout/header.jsp" /> 
 
-<p> 
-강민규
-강현지
-김영현
-모영진
-석진엽
-</p>
- 
+<style type="text/css">
+ .family {
+ 	width: 1200px;
+ 	text-align:center;
+ }
+
+</style>
+
+<br><br>
+<div class="family">
+<div><img src="/logo/semi_default.png" width="70px" height="65px">강민규</div><br><br>
+<div><img src="/logo/semi_default.png" width="70px" height="65px">강현지</div><br><br>
+<div><img src="/logo/semi_default.png" width="70px" height="65px">김영현</div><br><br>
+<div><img src="/logo/semi_default.png" width="70px" height="65px">모영진</div><br><br>
+<div><img src="/logo/semi_default.png" width="70px" height="65px">석진엽</div><br><br>
+</div>
  
  
  
