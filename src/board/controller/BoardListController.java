@@ -1,6 +1,7 @@
 package board.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.service.face.BoardService;
 import board.service.impl.BoardServiceImpl;
+import dto.Schedule;
 import util.Paging;
 
 @WebServlet("/board/list")
@@ -84,6 +86,15 @@ public class BoardListController extends HttpServlet {
 			
 		}
 
+		// 스케줄 정보 조회
+		
+		List<Schedule> schedule = boardService.getSchedule();
+		
+		Map<Integer, Date> getScheDate = new HashMap<>();
+		for(int i=0; i<schedule.size(); i++) {
+			getScheDate.put(schedule.get(i).getScheduleno(), schedule.get(i).getGamedate());
+		}
+		
 		// model로 Paging 객체 넣기
 		req.setAttribute("paging", paging);
 		
@@ -98,6 +109,8 @@ public class BoardListController extends HttpServlet {
 			req.setAttribute("team", team);
 			req.setAttribute("region", region);
 		}
+		
+		req.setAttribute("getScheDate", getScheDate);
 		
 		// view 지정
 		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);

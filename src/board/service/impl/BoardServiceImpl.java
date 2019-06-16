@@ -301,6 +301,12 @@ public class BoardServiceImpl implements BoardService {
 		return paging;
 	}
 
+	@Override
+	public List getSchedule() {
+		
+		return boardDao.getSchedule();
+	}
+
 
 
 	
