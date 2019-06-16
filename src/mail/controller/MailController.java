@@ -42,7 +42,7 @@ public class MailController extends HttpServlet {
 		
 		
 		// FROM
-		final String FROM = "genenune@gmail.com"; // <<------------------------------수정하세요
+		final String FROM = "kang7542@gmail.com"; // <<------------------------------수정하세요
 		final String FROMNAME = "MatchingMaster"; // <<------------------------------수정하세요
 
 		// TO
@@ -57,7 +57,7 @@ public class MailController extends HttpServlet {
 				"<p>인증 코드는 "+ req.getParameter("code") + " 입니다.</p>"); // <<------------------------------수정하세요
 
 		// 인증 객체
-		Authenticator auth = new MailAuth("genenune@gmail.com", "dudgus13"); // <<------------------------------수정하세요
+		Authenticator auth = new MailAuth("kang7542@gmail.com", "project4321!"); // <<------------------------------수정하세요
 
 		// 연결 설정
 		Properties props = System.getProperties();

@@ -263,7 +263,7 @@ $(document).ready(function(){
 
 	<span style="float:right; padding: 20px 10px;" class="more">
 	<span class="blind">
-	<img src="/logo/semi_default.png" width="60px" height="50px">
+	<img src="/logo/semi_default.png" width="60px" height="60px">
 	</span>
 	</span>
 	
