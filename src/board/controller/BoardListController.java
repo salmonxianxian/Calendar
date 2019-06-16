@@ -50,13 +50,24 @@ public class BoardListController extends HttpServlet {
 			region = "all";
 		}
 
+		//	경기 일정 페이지에서 넘어왔을 경우.
+		int sno = 0;
+		if ((String)req.getParameter("schno")!=null) {
+			sno = Integer.parseInt((String)req.getParameter("schno"));
+		}
+		
 		// 요청 파라미터에서 curPage 얻어오기
 		Paging paging;
 		
 		if(event!=null) {	//	상세검색을 했을 경우
 			paging = boardService.getSelectCurPage(req, event, team, region);
 		} else {	//	상세검색 안했을 경우 원래대로 출력
-			paging =  boardService.getCurPage(req);
+			if(sno!=0) {
+				paging = boardService.getSelectbyScheNo(req, sno);
+			} else {
+				paging =  boardService.getCurPage(req);
+			}
+			
 		}
 		
 		// 게시판 목록 조회
@@ -64,7 +75,13 @@ public class BoardListController extends HttpServlet {
 		if(event!=null) {	//	상세검색을 했을 경우
 			list = boardService.selectBoardByTeamRegion(paging, event, team, region);
 		} else {	//	상세검색 안했을 경우 원래대로 출력
-			list = boardService.getList(paging);
+			
+			if(sno!=0) {
+				list = boardService.selectBoardByScheNo(paging, sno);
+			} else {
+				list = boardService.getList(paging);
+			}
+			
 		}
 
 		// model로 Paging 객체 넣기

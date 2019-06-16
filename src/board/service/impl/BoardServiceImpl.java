@@ -286,10 +286,35 @@ public class BoardServiceImpl implements BoardService {
 			cnt += boardDao.getSelectCntAll((int)scheduleno.get(i), team);
 		}
 		
-		System.out.println(cnt);
 		// 페이징 객체 생성
 		Paging paging = new Paging(cnt, curPage);
 
+		return paging;
+	}
+
+	@Override
+	public List selectBoardByScheNo(Paging paging, int sno) {
+		
+		return boardDao.selectBoardByScheNo(paging, sno);
+	}
+
+	@Override
+	public Paging getSelectbyScheNo(HttpServletRequest req, int sno) {
+		
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		if(param!=null &&!"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 전체 게시글 수
+		int totalCount = boardDao.getSelectbyScheNo(sno);
+		
+		// 페이징 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		
 		return paging;
 	}
 
