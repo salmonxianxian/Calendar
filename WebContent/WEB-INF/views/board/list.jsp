@@ -121,7 +121,7 @@ table, th{
 
 
 <!-- 사이드바 -->
-<div style="width:200px; background: #AAEBAA; float:left; height:660px;"> 
+<!-- <div style="width:200px; background: #74D19D; float:left; height:660px;">  -->
 <!-- 상세 검색 조건 유지를 위해 값 전달받음 -->
 <!-- 선택한 종목 = chkEvent, 선택한 팀 = team, 선택한 지역 = region -->
 <%	int chkEvent = (int)request.getAttribute("chkEvent"); %>
@@ -132,11 +132,11 @@ table, th{
 	region = (String)request.getAttribute("region");
 }%>
 
-<div style="width:200px; background: #b4b4b4; float:left; height:660px;"> 
+<div style="width:200px; background: #ffff; border-right: 1px solid #b4b4b4; float:left; height:660px;"> 
 <br><br><br>
 <form action="/board/list" method="get">
 <fieldset>
-<legend style="font-size: 18px;">상 세 검 색</legend>
+<legend style="font-size: 18px; text-align:center;">상 세 검 색</legend>
 <div style="width:200px; text-align: center;">
 	<div>
 		<input type="hidden" name="mno" value="${month}">	<!-- 선택 월 전달 -->
@@ -253,7 +253,7 @@ table, th{
 
 <br>
 <div class="maching"><h1>직관 매칭 게시판</h1></div>
-<hr>
+
 
 
 

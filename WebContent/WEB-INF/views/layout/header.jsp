@@ -22,25 +22,49 @@
 <style type="text/css">
 #header {
 	text-align: left;
-	background: #828282;
+	background: #ffff;
 	height: 80px;
 	width: 1200px;
 	
 }
 
+#footer{
+	z-index:1;
+	position:relative;
+	width:1200px;
+	height:60px;
+}
 
-#footer {
+#footer:after {
+	position:absolute;
 	text-align: center;
 	display: table;
-	background: #828282;
+	background: #FFFF;
+	background-image:url("/logo/footer.JPG");
+	background-repeat:no-repeat;
+	background-position:center;
+	background-origin: content-box;
+	background-size: 100%;
+	opacity: 0.3!important; filter:alpha(opacity=30);
+	z-index: -1;
 	height: 60px;
 	width: 1200px;
+	top:0;
+	left:0;
+	content:"";
+	text-align:center;
 	
 }
+
+#footerlist {
+	text-align:center;
+}
+
 .p {
-	display: table-cell;
+	display: list-item;
 	vertical-align: middle;
 	text-align: center;
+	algin: center;
 }
 
 
@@ -218,7 +242,8 @@ $(document).ready(function(){
 
 <div id="header">
 
-	<span style="font-size:3.5em;" id="h"><a href="/main">직관의민족</a></span>
+	<span style="font-size:3.5em;" id="h"><a href="/main">
+	<img src="/logo/semi_name.JPG" width="300px" height="80px"></a></span>
 	<span>
 	<button type="button" onclick='location.href="/schedule/week";'>일정</button></span>
 	<span>
