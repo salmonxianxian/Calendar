@@ -207,7 +207,6 @@ table, tr{
   position:absolute; 
   top:130px;
   left: 780px;
-/*   right: 320px; */
   width:150px; 
   height:80px; 
   background: #dcdcdc;
@@ -319,6 +318,7 @@ table, tr{
 
 <tr>
 <td class="success" style="text-align: center">제목</td><td colspan="7">${viewBoard.title }</td>
+<td class="success"	style="text-align: center">경기하는팀</td><td colspan="2">여기에경기팀</td>
 </tr>
 
 <tr><td class="success" style="text-align: center" colspan="8" >본문</td></tr>

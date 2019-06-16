@@ -1,0 +1,14 @@
+/bin/
+/.settings/
+/board/
+/build/
+/dbutil/
+/dto/
+/mail/
+/main/
+/manage/
+/member/
+/reply/
+/report/
+/schedule/
+/util/
