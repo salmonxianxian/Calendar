@@ -294,8 +294,7 @@ table, th{
  	<td>${getScheDate.get(i.scheduleno) }</td>
  	<!-- 응원하는 팀 icon -->
  	<td>
-		<img src="/logo/${icon.get(i.team) }"
-		style="width: 21px; height: 21px;"/>
+		<img src="/logo/${icon.get(i.team) }" style="width: 21px; height: 21px;"/>
 		${i.team }
 		<br>
  	</td>

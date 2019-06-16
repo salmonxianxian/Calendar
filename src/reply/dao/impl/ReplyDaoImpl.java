@@ -35,7 +35,7 @@ public class ReplyDaoImpl implements ReplyDao {
 				+ "		insertdate"
 				+ "	FROM reply"
 				+ "	WHERE boardno = ?"
-				+ "	ORDER BY insertdate DESC"
+				+ "	ORDER BY insertdate"
 				+ "	) B"
 				+ ") ORDER BY rnum";
 		
