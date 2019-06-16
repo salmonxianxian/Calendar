@@ -364,7 +364,7 @@ public class BoardDaoImpl implements BoardDao {
 		
 		String sql = "";
 
-		sql += "SELECT schduleno FROM schedule";
+		sql += "SELECT scheduleno FROM schedule";
 		sql += " WHERE gamedate=?";
 		sql += " And (hometeam=? or awayteam=?)";
 		
@@ -379,6 +379,7 @@ public class BoardDaoImpl implements BoardDao {
 			
 
 			while(rs.next()){
+				System.out.println(rs.getInt("scheduleno"));
 				scheduleno = rs.getInt(1);
 			}
 			
