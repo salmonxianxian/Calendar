@@ -1,5 +1,7 @@
 package manage.service.impl;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dto.Getout;
@@ -14,7 +16,12 @@ public class ManageGetoutServiceImpl implements ManageGetoutService{
    @Override
    public void insert(HttpServletRequest req) {
       
-      
+	   try {
+		req.setCharacterEncoding("utf-8");
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
       
       Getout getout = new Getout();
       

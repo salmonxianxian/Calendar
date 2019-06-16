@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 </style>
 
-<div class = "contents">
+<div class = "contents" >
 
 <div><h1>회원 정보</h1></div>
 <div class="clearfix">
@@ -121,7 +121,7 @@ $(document).ready(function() {
 </div>
 
 
-
+<div class="center" style="width:1200px; height: 400px;">
 <table class="table table-bordered">
 
 <tr>
@@ -151,6 +151,7 @@ $(document).ready(function() {
 </tr>
 
 </table>
+</div>
 </div>
 </div>
 

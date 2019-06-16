@@ -1,11 +1,12 @@
 /board/
-/dbutil/
 /dto/
+/manage/
+/reply/
+
+/dbutil/
 /mail/
 /main/
-/manage/
 /member/
-/reply/
 /report/
 /schedule/
 /util/
