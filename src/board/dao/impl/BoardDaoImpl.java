@@ -11,6 +11,7 @@ import java.util.List;
 import board.dao.face.BoardDao;
 import dbutil.DBConn;
 import dto.Board;
+import dto.Icon;
 import dto.Schedule;
 import util.Paging;
 
@@ -173,6 +174,7 @@ public class BoardDaoImpl implements BoardDao {
 		return viewBoard;
 	}
 
+
 	// 게시글 조회 
 	@Override
 	public int selectBoardno() {
@@ -313,16 +315,17 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	//---------------------------------------------
-//	@Override
-//	public List getList(String event, String team, String region) {
-//		
-//		
-//		
-//		return null;
-//	}
+	@Override
+	public List getList(String event, String team, String region) {
+		
+		
+		
+		return null;
+	}
 
 	
-	
+
+//----------------------------------------------------------------------------------------------	
 	// 내가 쓴 글 보기 
 	@Override
 	public void myBoard(Board board) {
@@ -352,12 +355,15 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
+//-----------------------------------------------------------------------
+	//응원하는팀 
 	@Override
 	public int scheduleno(String team, String gamedate) {
 		
 		int scheduleno = 0;
 		
 		String sql = "";
+
 		sql += "SELECT schduleno FROM schedule";
 		sql += " WHERE gamedate=?";
 		sql += " And (hometeam=? or awayteam=?)";
@@ -371,6 +377,7 @@ public class BoardDaoImpl implements BoardDao {
 			
 			rs = ps.executeQuery();
 			
+
 			while(rs.next()){
 				scheduleno = rs.getInt(1);
 			}
@@ -381,6 +388,8 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return scheduleno;
 	}
+
+
 
 	@Override
 	public List getScheduleno(String event, String team, String region) {
@@ -777,6 +786,84 @@ public class BoardDaoImpl implements BoardDao {
 		return searchBoard;
 	}
 
-	
+	@Override
+	public List selectBoardByScheNo(Paging paging, int sno) {
+		String sql = "";
+		sql += "SELECT * FROM (";
+		sql += " SELECT rownum rnum, B.* FROM (";
+		sql += " 	SELECT boardno, nickname, title, content, scheduleno, team, insertdate, hit FROM board";
+		sql += "	where scheduleno = ?";
+		sql += " 	ORDER BY boardno DESC)B";
+		sql += " ORDER BY rnum)";
+		sql += " WHERE rnum BETWEEN ? AND ?";
 		
+		List list = new ArrayList();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, sno); 
+			ps.setInt(2, paging.getStartNo()); 
+			ps.setInt(3, paging.getEndNo()); 
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Board board = new Board();
+				
+				board.setBoardno(rs.getInt("boardno"));
+				board.setNickname(rs.getString("nickname"));
+				board.setTitle(rs.getString("title"));
+				board.setContent(rs.getString("content"));
+				board.setScheduleno(rs.getInt("scheduleno"));
+				board.setTeam(rs.getString("team"));
+				board.setInsertdate(rs.getDate("insertdate"));
+				board.setHit(rs.getInt("hit"));
+				
+				list.add(board);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null)
+				try {
+					if(rs!=null)	rs.close();
+					if(ps!=null)	ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			
+		}
+		return list;
+	}
+
+	@Override
+	public int getSelectbyScheNo(int sno) {
+		
+		String sql = "";
+		sql += "SELECT count(*)";
+		sql += " FROM board where scheduleno = ?";
+		
+		int totalCount = 0;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, sno);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null) 	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return totalCount;
+	}
 }

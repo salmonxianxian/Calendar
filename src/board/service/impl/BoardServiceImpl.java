@@ -110,6 +110,7 @@ public class BoardServiceImpl implements BoardService {
 		board.setContent(req.getParameter("content"));
 
 		String team = req.getParameter("team");
+		
 		String gamedate = req.getParameter("insertdate");
 
 		int scheduleno = boardDao.scheduleno(team, gamedate);
@@ -121,25 +122,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		
 //		System.out.println("보드서비스에서 리퀘스터로 받은 값"+board);
-		
-
-	
-//		Board board = null;
-//		board = new Board();
-//		int boardno = boardDao.selectBoardno();
-//		
-//		boardDao.insert(board);
-
-		
-//		if (board != null) {
-//			board.setBoardno(boardno);
-//		
-//		if(board.getTitle()==null || "".equals(board.getTitle())){
-//			board.setTitle("(제목없음)");
-//		
-//			
-//		}
-		
 
 	}
 
@@ -224,7 +206,7 @@ public class BoardServiceImpl implements BoardService {
 		Reply reply = new Reply();
 		reply.setBoardno(Integer.parseInt(boardno));
 		reply.setNickname(nickname);
-		reply.setReplyContent(recontent);
+		reply.setRecontent(recontent);
 		
 		return reply;
 	}
@@ -261,6 +243,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
+//----------------------------------------------------------------------------------------------
 	@Override
 	public List selectBoardByTeamRegion(Paging paging, String event, String team, String region) {
 		
@@ -286,12 +269,39 @@ public class BoardServiceImpl implements BoardService {
 			cnt += boardDao.getSelectCntAll((int)scheduleno.get(i), team);
 		}
 		
-		System.out.println(cnt);
 		// 페이징 객체 생성
 		Paging paging = new Paging(cnt, curPage);
 
 		return paging;
 	}
+
+	@Override
+	public List selectBoardByScheNo(Paging paging, int sno) {
+		
+		return boardDao.selectBoardByScheNo(paging, sno);
+	}
+
+	@Override
+	public Paging getSelectbyScheNo(HttpServletRequest req, int sno) {
+		
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		if(param!=null &&!"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 전체 게시글 수
+		int totalCount = boardDao.getSelectbyScheNo(sno);
+		
+		// 페이징 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		
+		return paging;
+	}
+
+
 
 	
 	

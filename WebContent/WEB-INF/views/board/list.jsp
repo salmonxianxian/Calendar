@@ -34,6 +34,20 @@ $(document).ready(function(){
 	
 });
 
+
+$(document).ready(function(){
+	  $('.more2').click(function(){
+	    if($('.more2').hasClass('more2')){
+	       $('.more2').addClass('close').removeClass('more2');
+	       $('.listnick').css('visibility', 'visible');
+	    }else if($('.close').hasClass('close')){
+	       $('.close').addClass('more2').removeClass('close');  
+	       $('.listnick').css('visibility', 'hidden');
+	    }
+	  });
+});
+
+
 </script>
 
 <style type="text/css">
@@ -61,10 +75,38 @@ table, th{
 	text-align: center;
 }
 
-#listtable {
-	margin-left: auto;
-	margin-right: auto;
+/* #listtable { */
+/* 	margin-left: auto; */
+/* 	margin-right: auto; */
+/* } 
+
+/* 본문 내용 몇글자만 보이고 가리기 */
+
+
+ .listnick {
+  font-size:13px;
+  position:absolute; 
+  top:230px;
+  left: 450px; 
+/*   right: 320px; */
+   width:150px; 
+  height:80px; 
+  background: #dcdcdc;
+  visibility:hidden;
+} 
+
+.more2 {
+	display: inline;
+	width: 80px;
+	hight: 20px;
+	background-position: 80px -78px;
+	
 }
+
+.more2:hover, .close:hover {
+  cursor:pointer;
+}
+
 </style>
 
 <!-- <script>
@@ -72,6 +114,9 @@ table, th{
 
 </script> -->
 
+
+<!-- 사이드바 -->
+<div style="width:200px; background: #AAEBAA; float:left; height:660px;"> 
 <!-- 상세 검색 조건 유지를 위해 값 전달받음 -->
 <!-- 선택한 종목 = chkEvent, 선택한 팀 = team, 선택한 지역 = region -->
 <%	int chkEvent = (int)request.getAttribute("chkEvent"); %>
@@ -132,7 +177,7 @@ table, th{
 			<option value="한화"<% if("한화".equals(team)) { %>selected<% } %>>한화 이글스</option>
 		</select>
 	</div>
-	
+
 	<div id="selSC" <% if(chkEvent!=2) { %>style="display: none"<% } %>>
 		<select name="soccerTeam">	<!-- 축구 팀 선택 -->
 			<option value="all"<% if("all".equals(team)) { %>selected<% } %>>--- 축구팀 ---</option>
@@ -219,15 +264,15 @@ table, th{
 <hr>
 
 <table border="1" style="margin-left: auto;
-	margin-right: auto;">
+	margin-right: auto;" style="table-layout:fixed;">
 <thead>
 	<tr>
 		<th style="width: 5%;">번호</th>
-		<th style="width: 10%;">닉네임</th>
-		<th style="width: 10%;">제목</th>
-		<th style="width: 35%;">내용</th>
-		<th style="width: 10%;">스케줄</th>
-		<th style="width: 10%;">경기팀</th>
+		<th style="width: 20%;">닉네임</th>
+		<th style="width: 40%;">제목</th>
+<!-- 		<th style="width: 35%;">내용</th> -->
+		<th style="width: 5%;">스케줄</th>
+		<th style="width: 10%;">응원하는팀</th>
 		<th style="width: 15%;">작성일</th>
 		<th style="width: 5%;">조회수</th>
 	</tr>
@@ -238,9 +283,21 @@ table, th{
  <tr>
  
  	<td>${i.boardno }</td>
- 	<td>${i.nickname }</td>
+ 	<td>${i.nickname }
+ 	<span style="float:right;" class="more2">
+	<span class="blind">
+	<img src="/logo/semi_default.png" width="30px" height="20px">
+	</span>
+	</span>
+	
+	<div class="listnick">
+  	<ul class="list">
+  	<li> 프로필 </li>
+  	</ul>
+	</div>
+ 	</td>
  	<td><a href="/board/view?boardno=${i.boardno}">${i.title }</a></td>
- 	<td>${i.content }</td>
+<%--  	<td style="text-overflow:ellipsis; overflow:hidden">${i.content }</td> --%>
  	<td>${i.scheduleno }</td>
  	<td>${i.team }</td>
  	<td><fmt:formatDate value="${i.insertdate }" pattern="yyyy-MM-dd"/></td>

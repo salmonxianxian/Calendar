@@ -31,9 +31,9 @@ public class ReplyDeleteController extends HttpServlet {
 		
 		reply.setReplyno(Integer.parseInt(replyno));
 		
-		boolean deleted = boardService.deleteReply(reply);  // 삭제 처리 결과 저장하는 boolean 타입 변수
+		boolean success = boardService.deleteReply(reply);  // 삭제 처리 결과 저장하는 boolean 타입 변수
 		
-		response.getWriter().append("{\"+success\": "+deleted+"}"); // 결과 출력
+		response.getWriter().append("{\"success\":"+success+"}"); // 결과 출력
 		
 	}
 

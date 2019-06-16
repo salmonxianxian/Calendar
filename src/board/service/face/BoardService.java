@@ -73,5 +73,11 @@ public interface BoardService {
 		//	요청파라미터 
 	public Paging getSelectCurPage(HttpServletRequest req, String event, String team, String region);
 
+	public List selectBoardByScheNo(Paging paging, int sno);
+
+	public Paging getSelectbyScheNo(HttpServletRequest req, int sno);
+
+
+
 
 }
