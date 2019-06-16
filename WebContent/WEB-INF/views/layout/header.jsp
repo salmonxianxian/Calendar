@@ -82,7 +82,7 @@
   top:60px;
   right: 320px;
   width:150px; 
-  height:80px; 
+  height:53px; 
   background: #dcdcdc;
   visibility:hidden; 
 }
@@ -182,10 +182,8 @@ $(document).ready(function(){
 	
 	    <!-- 로그인상태 -->
     <c:if test="${login }">
-	
-	
-	
-	
+
+
 	<span style="float:right; padding: 20px 10px;" class="more">
 	<span class="blind">
 	<img src="/logo/semi_default.png" width="60px" height="50px">
@@ -194,9 +192,14 @@ $(document).ready(function(){
 	
 	<div class="board">
   	<ul class="list">
-  	<li> 프로필 </li>
-  	<li onClick="location.href='/mypage/update'"> 개인정보수정 </li>
+	<% if((int)session.getAttribute("grade") == 1) { %>
+  	<li onClick="location.href='/mypage/update'"> 마이페이지 </li>
   	<li onClick="location.href='/logout'"> 로그아웃</li>
+  	<%}%>
+  	<% if((int)session.getAttribute("grade") == 2) { %>
+  	<li onClick="location.href='/manage/page'"> 관리자페이지 </li>
+  	<li onClick="location.href='/logout'"> 로그아웃</li>
+  	<%}%>
   	</ul>
 	</div>
 	
