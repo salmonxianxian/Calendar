@@ -56,12 +56,12 @@
               <a href="#" class="room">
                 <figure class="img-wrap">
                 <!-- 야구1: baseballTeam:? region=all -->
-                <a href="http://localhost:8085/schedule/week?&event=1&&baseballTeam=KT&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=KT&BBregion=all">
                   <img src="../../../logo/semi_KT위즈.png" width="125px" alt="KT위즈" class="img-fluid mb-3" align="center">
                 </a>
                 </figure>
                 <div class="p-3 text-center room-info">
-                  <h2 style="color: white">KT위즈</h2>
+                  <h2 style="color: white">KT</h2>
                 </div>
               </a>
             </div>
@@ -69,7 +69,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                  <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=LG트윈스&BBregion=all" >
+                  <a href="/schedule/week?&event=1&&baseballTeam=LG&BBregion=all" >
                   <img src="../../../logo/semi_LG트윈스.png" width="125px" alt="LG트윈스" class="img-fluid mb-3">
                   </a>
                 </figure>
@@ -82,7 +82,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=NC다이노스&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=NC&BBregion=all" >
                   <img src="../../../logo/semi_NC다이노스.png" width="125px" alt="NC다이노스" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -95,7 +95,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=SK와이번스&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=SK&BBregion=all" >
                   <img src="../../../logo/semi_SK와이번스.png" width="125px" alt="SK와이번스" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -108,7 +108,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=기아타이거즈&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=기아&BBregion=all" >
                   <img src="../../../logo/semi_기아타이거즈.png" width="125px" alt="기아타이거즈" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -121,7 +121,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=두산베어스&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=두산&BBregion=all" >
                   <img src="../../../logo/semi_두산베어스.png" width="125px" alt="두산베어스" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -134,7 +134,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=롯데자이언츠&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=롯데&BBregion=all" >
                   <img src="../../../logo/semi_롯데자이언츠.png" width="125px" alt="롯데자이언츠" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -147,7 +147,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=삼성라이온즈&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=삼성&BBregion=all" >
                   <img src="../../../logo/semi_삼성라이온즈.png" width="125px" alt="삼성라이온즈" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -160,7 +160,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=키움히어로즈&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=키움&BBregion=all" >
                   <img src="../../../logo/semi_키움히어로즈.png" width="125px" alt="키움히어로즈" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -173,7 +173,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=한화이글스&BBregion=all" >
+                <a href="/schedule/week?&event=1&&baseballTeam=한화&BBregion=all" >
                   <img src="../../../logo/semi_한화이글스.png" width="125px" alt="한화이글스" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -208,7 +208,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=FC서울&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=서울&SCregion=all" >
                   <img src="../../../logo/semi_FC서울.png" width="125px" alt="FC서울" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -221,7 +221,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=수원삼성블루윙즈&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=수원&SCregion=all" >
                   <img src="../../../logo/semi_수원삼성블루윙즈.png" width="125px" alt="수원삼성블루윙즈" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -234,7 +234,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=경남FC&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=경남&SCregion=all" >
                   <img src="../../../logo/semi_경남FC.png" width="125px" alt="경남FC" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -247,7 +247,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=강원FC&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=강원&SCregion=all" >
                   <img src="../../../logo/semi_강원FC.png" width="125px" alt="강원FC" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -260,7 +260,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=대구FC&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=대구&SCregion=all" >
                   <img src="../../../logo/semi_대구FC.png" width="125px" alt="대구FC" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -273,7 +273,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=성남FC&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=성남&SCregion=all" >
                   <img src="../../../logo/semi_성남FC.png" width="125px" alt="성남FC" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -286,7 +286,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=상주FC&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=상주&SCregion=all" >
                   <img src="../../../logo/semi_상주FC.png" width="125px" alt="상주상무" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -299,7 +299,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=울산현대&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=울산&SCregion=all" >
                   <img src="../../../logo/semi_울산현대.png" width="125px" alt="울산현대" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -312,7 +312,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=인천유나이티드&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=인천&SCregion=all" >
                   <img src="../../../logo/semi_인천유나이티드.png" width="125px" alt="인천유나이티드" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -325,7 +325,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=전북현대모터스&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=전북&SCregion=all" >
                   <img src="../../../logo/semi_전북현대모터스.png" width="125px" alt="전북현대" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -338,7 +338,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=제주유나이티드&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=제주&SCregion=all" >
                   <img src="../../../logo/semi_제주유나이티드.png" width="125px" alt="제주유나이티드" class="img-fluid mb-3">
                 </a>
                 </figure>
@@ -351,7 +351,7 @@
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
               <a href="#" class="room">
                 <figure class="img-wrap">
-                <a href="http://localhost:8081/schedule/week?&event=2&&soccerTeam=포항스틸러스&SCregion=all" >
+                <a href="/schedule/week?&event=2&&soccerTeam=포항&SCregion=all" >
                   <img src="../../../logo/semi_포항스틸러스.png" width="125px" alt="포항스틸러스" class="img-fluid mb-3">
                 </a>
                 </figure>
