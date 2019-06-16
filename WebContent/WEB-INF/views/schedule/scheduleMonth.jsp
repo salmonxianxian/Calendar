@@ -78,7 +78,8 @@
 </script>
 
 <!-- 좌측 레이아웃 -->
-<div style="width:200px; background: #b4b4b4; float:left; height:1670px; text-align: center">
+<div style="width:200px; background: #ffff; border-right: 1px solid #b4b4b4; float:left; height:660px;"> 
+
 <br>
 <br>
 <br>
@@ -86,7 +87,7 @@
 <!-- 상세 검색 값 폼으로 get방식 전달 -->
 <form action="/schedule/month" method="get">
 <fieldset>
-<legend style="font-size: 18px;">상 세 검 색</legend>
+<legend style="font-size: 18px; text-align:center;">상 세 검 색</legend>
 <div style="width:200px; text-align: center;">
 	<div>
 		<input type="hidden" name="mno" value="${month}">	<!-- 선택 월 전달 -->

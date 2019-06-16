@@ -166,7 +166,7 @@ table, tr{
 
 #modal .modal_content {
   width:300px;
-  margin:100px auto;
+  margin:auto;
   padding:20px 10px;
   background:#fff;
   border:2px solid #666;
@@ -185,8 +185,8 @@ table, tr{
 #modal_table {
 	display:table;
 	position:relative;
-	width:100%;
-	height:200px;
+	width:auto;
+	height:auto;
 	border:2px solid #666;
 } 
 
@@ -256,7 +256,7 @@ table, tr{
         </td></tr>
         
        
-        <tr><td><input type="text" value="제목"></td></tr>
+        <tr><td><input type="text" value="제목"/></td></tr>
         
        <tr><td>
        <textarea placeholder="내용을 입력해 주세요" style="text-align: center" >내용을 입력해 주세요 </textarea>
@@ -269,7 +269,7 @@ table, tr{
        	<input type="button" id="modal_write_btn" style="text-align: center" value="작성"/>
        	 &nbsp;&nbsp;&nbsp;
        	<input type="button" id="modal_close_btn" style="text-align: center" value="취소"/>
-	</div>
+		</div>
     </div>
    
  	   <div class="modal_layer"></div>
@@ -284,14 +284,12 @@ table, tr{
 <tr>
 <td class="success" style="text-align: center">글번호</td><td colspan="2">${viewBoard.boardno }</td>
 <td class="success" style="text-align: center">
-닉네임</td><td colspan="2">${viewBoard.nickname }
-
-<span style="float:right;" class="more1">
-	<span class="blind">
-	<img src="/logo/semi_default.png" width="30px" height="20px">
+닉네임</td>
+<td colspan="2">
+<span class="more1">
+	<img src="/logo/semi_default.png" width="20px" height="20px"/>
 	</span>
-	</span>
-	
+	${viewBoard.nickname }
 	<div class="viewnick">
   	<ul class="list">
   	<li> 프로필 </li>
@@ -304,7 +302,10 @@ table, tr{
 
 
 </td>
-<td class="success" style="text-align: center">응원하는팀</td><td colspan="2">${viewBoard.team }</td>
+<td class="success" style="text-align: center">응원하는팀</td>
+<td colspan="2">
+	<img src="/logo/${icon.get(viewBoard.team) }" style="width: 21px; height: 21px;"/>
+		${viewBoard.team }</td>
 
 </tr>
 
@@ -312,13 +313,19 @@ table, tr{
 <tr>
 <td class="success" style="text-align: center">조회수</td><td colspan="2">${viewBoard.hit }</td>
 <td class="success" style="text-align: center">작성일</td><td colspan="2">${viewBoard.insertdate }</td>
-<td class="success" style="text-align: center">스케줄</td><td colspan="2">${viewBoard.scheduleno}</td>
+<td class="success" style="text-align: center">경기날짜</td><td colspan="2">${schedule.gamedate}</td>
 </tr>
 
 
 <tr>
-<td class="success" style="text-align: center">제목</td><td colspan="7">${viewBoard.title }</td>
-<td class="success"	style="text-align: center">경기하는팀</td><td colspan="2">여기에경기팀</td>
+<td class="success" style="text-align: center">제목</td><td colspan="5">${viewBoard.title }</td>
+<td class="success"	style="text-align: center">경기하는팀</td>
+<td colspan="2">
+	<span><img src="/logo/${icon.get(schedule.hometeam) }" style="width: 21px; height: 21px;"/>
+		${schedule.hometeam}</span> VS 
+	<span><img src="/logo/${icon.get(schedule.awayteam) }" style="width: 21px; height: 21px;"/>
+		${schedule.awayteam}</span>
+</td>
 </tr>
 
 <tr><td class="success" style="text-align: center" colspan="8" >본문</td></tr>
@@ -368,7 +375,8 @@ table, tr{
 	<th style="width: 5%;">번호</th>
 	<th style="width: 10%;">닉네임</th>
 	<th style="width: 65%;">댓글</th>
-	<th style="width: 20%;">작성일</th>
+	<th style="width: 15%;">작성일</th>
+	<th style="width: 5%;">삭제</th>
 </tr>
 </thead>
 
@@ -379,7 +387,7 @@ table, tr{
 <tr data-replyno="${reply.replyno }">
 
 	<td>${reply.rnum }</td>
-	<td>${reply.nickname }<img src="/logo/semi_default.png" width="30px" height="20px"></td>
+	<td><img src="/logo/semi_default.png" width="20px" height="20px"/>${reply.nickname }</td>
 	<td>${reply.recontent }</td>
 	<td><fmt:formatDate value="${reply.insertdate }" /></td>
 	
@@ -432,36 +440,7 @@ $("#modal_open_btn").click(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
 <br><br><br><br>
 
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

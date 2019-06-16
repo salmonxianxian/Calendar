@@ -50,9 +50,13 @@ table, th{
 
 </style>
 
+<<<<<<< HEAD
 <div class="bg-info" style="width:200px; float:left; height:660px;"> 
+=======
+<div style="width:200px; background: #ffff; border-right: 1px solid #b4b4b4; float:left; height:660px;"> 
+>>>>>>> gg
 
-<div id="maching" style="margin-center: auto;">
+<div id="maching" style="margin-center: auto; text-align:center;">
 	<br>
 	<br>
 	<div class="text-muted"><h2 >목 록</h2></div>
