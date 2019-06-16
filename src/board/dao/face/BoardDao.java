@@ -52,4 +52,6 @@ public interface BoardDao {
 	public int getSelectbyScheNo(int sno);
 
 	public List getSchedule();
+
+	public Schedule getScheduleInfo(int scheduleno);
 }

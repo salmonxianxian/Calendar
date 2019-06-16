@@ -901,4 +901,39 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		return list;
 	}
+
+	@Override
+	public Schedule getScheduleInfo(int scheduleno) {
+		
+		Schedule schedule = new Schedule();
+		
+		String sql = "";
+		sql += "SELECT scheduleno, hometeam, awayteam, gamedate FROM schedule";
+		sql += " WHERE scheduleno = ?";
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, scheduleno);
+		
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				schedule.setScheduleno(rs.getInt("scheduleno"));
+				schedule.setHometeam(rs.getString("hometeam"));
+				schedule.setAwayteam(rs.getString("awayteam"));
+				schedule.setGamedate(rs.getDate("gamedate"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			try {
+				if(rs!=null)	rs.close();
+				if(ps!=null)	ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return schedule;
+	}
 }

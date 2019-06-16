@@ -307,8 +307,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.getSchedule();
 	}
 
+	@Override
+	public Schedule getScheduleInfo(int scheduleno) {
+		
+		return boardDao.getScheduleInfo(scheduleno);
+	}
 
-
-	
 	
 }
