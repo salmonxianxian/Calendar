@@ -56,7 +56,7 @@
               <a href="#" class="room">
                 <figure class="img-wrap">
                 <!-- 야구1: baseballTeam:? region=all -->
-                <a href="http://localhost:8081/schedule/week?&event=1&&baseballTeam=KT위즈&BBregion=all" >
+                <a href="http://localhost:8085/schedule/week?&event=1&&baseballTeam=KT&BBregion=all" >
                   <img src="../../../logo/semi_KT위즈.png" width="125px" alt="KT위즈" class="img-fluid mb-3" align="center">
                 </a>
                 </figure>
