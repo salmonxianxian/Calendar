@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import dto.Board;
 import util.Paging;
 import dto.Reply;
+import dto.Schedule;
 
 public interface BoardService {
 	
@@ -78,6 +79,8 @@ public interface BoardService {
 	public Paging getSelectbyScheNo(HttpServletRequest req, int sno);
 
 	public List getSchedule();
+
+	public Schedule getScheduleInfo(int scheduleno);
 
 
 
