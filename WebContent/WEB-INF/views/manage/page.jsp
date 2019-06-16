@@ -50,9 +50,9 @@ table, th{
 
 </style>
 
-<div style="width:200px; background: #B4B4B4; float:left; height:660px;"> 
+<div style="width:200px; background: #ffff; border-right: 1px solid #b4b4b4; float:left; height:660px;"> 
 
-<div id="maching" style="margin-center: auto;">
+<div id="maching" style="margin-center: auto; text-align:center;">
 	<br>
 	<br>
 	<h2 >목 록</h2>

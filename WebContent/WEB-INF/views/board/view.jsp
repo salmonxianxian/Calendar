@@ -166,7 +166,7 @@ table, tr{
 
 #modal .modal_content {
   width:300px;
-  margin:100px auto;
+  margin:auto;
   padding:20px 10px;
   background:#fff;
   border:2px solid #666;
@@ -185,8 +185,8 @@ table, tr{
 #modal_table {
 	display:table;
 	position:relative;
-	width:100%;
-	height:200px;
+	width:auto;
+	height:auto;
 	border:2px solid #666;
 } 
 
