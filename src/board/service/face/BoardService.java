@@ -77,6 +77,8 @@ public interface BoardService {
 
 	public Paging getSelectbyScheNo(HttpServletRequest req, int sno);
 
+	public List getSchedule();
+
 
 
 
