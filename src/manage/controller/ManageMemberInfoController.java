@@ -22,16 +22,16 @@ public class ManageMemberInfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Member infoMember = managememberService.getUserid(req);
-		
+		String nickname = infoMember.getNickname();
 		req.setAttribute("infoMember", infoMember);
 		
-		int cntReply = managememberService.getReply(req);
-		
-		req.setAttribute("cntReply", cntReply);
-		
-		int cntBoard = managememberService.getcntBoard(req);
+		int cntBoard = managememberService.getcntBoard(nickname);
 		
 		req.setAttribute("cntBoard", cntBoard);
+		
+		int cntReply = managememberService.getReply(nickname);
+		
+		req.setAttribute("cntReply", cntReply);
 		
 		req.getRequestDispatcher("/WEB-INF/views/manage/memberinfo.jsp").forward(req, resp);
 	

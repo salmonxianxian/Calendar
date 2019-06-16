@@ -22,13 +22,13 @@
    <th><%=board.getInsertdate() %></th>
 </tr>
 <tr>
-   <td>작성자 : <%=board.getUserid() %></td>
+   <td>작성자 : <%=board.getNickname() %></td>
    <td>조회수 : <%=board.getHit() %></td>
 </tr>
 <tr>
    
    <td>
-   <% if(session.getAttribute("unick").equals(board.getUserid())) { %>
+   <% if(session.getAttribute("unick").equals(board.getNickname())) { %>
    <a href="/board/delete?bno=<%=board.getBoardno()%>">삭제</a></td>
    <% }%>
 </tr>

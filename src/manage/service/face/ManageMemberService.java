@@ -15,9 +15,9 @@ public interface ManageMemberService {
 	
 	public Member getUserid(HttpServletRequest req);
 
-	public int getReply(HttpServletRequest req);
+	public int getReply(String nickname);
 
-	public int getcntBoard(HttpServletRequest req);
+	public int getcntBoard(String nickname);
 
 	
 }
