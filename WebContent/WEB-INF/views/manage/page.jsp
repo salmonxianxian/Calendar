@@ -61,7 +61,7 @@ $(document).ready(function() {
 		<td><input type="checkbox" name="checkRow" value="${i.boardno }"/></td>
 		<td>${i.boardno }</td>
 		<td><a href="/board/view?boardno=${i.boardno}">${i.title }</a></td>
-		<td>${i.userid }</td>
+		<td>${i.nickname }</td>
 		<td><fmt:formatDate value="${i.insertdate }" pattern="yyyy-MM-dd" /></td>
 	</tr>
 </c:forEach>
