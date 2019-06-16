@@ -16,7 +16,7 @@
 }
 
 .schedule {
-	height : 200px;
+	height : 220px;
 	text-align: center;
 	font-size: 12px;
 	
@@ -275,7 +275,7 @@
 		<td align="center" style="width: 150px;">금</td>
 		<td align="center" style="width: 150px;">토</td> 
 	</tr>
-	<tr style="height: 230px;">
+	<tr style="height: 250px;">
 	<% if(week==1) { 
 		for(int i=1; i<=7; i++) { %>
 		<td>
@@ -286,6 +286,7 @@
 			<div class="schedule">
 			<% List<Schedule> monthList = monthMap.get(i-startDay-1);
 				for(int j=0; j<monthList.size(); j++) { %>
+					<a href="/board/list?schno=<%= monthList.get(j).getScheduleno() %>">
 					<!-- 홈팀 이름으로 아이콘 주소 값 가져와서 이미지 불러옴 -->
 					<img src="/logo/<%= chkIcon.get(monthList.get(j).getHometeam())%>"
 						style="width: 21px; height: 21px;"/>
@@ -294,6 +295,7 @@
 					<!-- 어웨이 팀 이름으로 아이콘 주소 값 가져와서 이미지 불러옴 -->
 					<img src="/logo/<%= chkIcon.get(monthList.get(j).getAwayteam())%>"
 						style="width: 21px; height: 21px;"/><br>
+					</a>
 					<% } %>
 			</div>
 		<% } %>
@@ -333,6 +335,7 @@
 			<br>
 			<% List<Schedule> monthList = monthMap.get(i-1);
 				for(int j=0; j<monthList.size(); j++) { %>
+				<a href="/board/list?schno=<%= monthList.get(j).getScheduleno() %>">
 					<!-- 홈팀 이름으로 아이콘 주소 값 가져와서 이미지 불러옴 -->
 					<img src="/logo/<%= chkIcon.get(monthList.get(j).getHometeam())%>"
 						style="width: 21px; height: 21px;"/>
@@ -341,6 +344,7 @@
 					<!-- 어웨이 팀 이름으로 아이콘 주소 값 가져와서 이미지 불러옴 -->
 					<img src="/logo/<%= chkIcon.get(monthList.get(j).getAwayteam())%>"
 						style="width: 21px; height: 21px;"/><br>
+					</a>
 					<% } %>
 			</div>
 		<% } %>

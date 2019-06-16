@@ -21,56 +21,86 @@ public class BoardListController extends HttpServlet {
 
 	// BoardService 객체
 	private BoardService boardService = new BoardServiceImpl();
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		// 요청 파라미터에서 curPage 얻어오기
-		Paging paging = boardService.getCurPage(req);
-		
-		// model로 Paging 객체 넣기
-		req.setAttribute("paging", paging);
-//		System.out.println(paging);
-		
-		// 게시판 목록 조회
-		List list = boardService.getList(paging);
 
-		// MODEL로 결과 넣기
-		req.setAttribute("list", list);
 		
-		// view 지정
-		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
-		
-		
-		// 상세 조회 
+//		System.out.println(paging);
+
+		// 상세 조회
 		String event = req.getParameter("event");
-		String team = null;  // 전달받은 팀 이름 
-		String region = null;  // 전달받은 지역 
-		
-		int chkEvent = 0;  // 야구인지 축구인지 체크 
-		
-		if(event!=null) {  // 아래 조건식 사용위해 string형 event 변수 int형으로 변환해서 저장할 변수 생성 
-			chkEvent = Integer.parseInt(event);  // 종목 값 숫자로 변환하여 변수에 저장 (1: 야구, 2: 축구)
+		String team = null; // 전달받은 팀 이름
+		String region = null; // 전달받은 지역
+
+		int chkEvent = 0; // 야구인지 축구인지 체크
+
+		if (event != null) { // 아래 조건식 사용위해 string형 event 변수 int형으로 변환해서 저장할 변수 생성
+			chkEvent = Integer.parseInt(event); // 종목 값 숫자로 변환하여 변수에 저장 (1: 야구, 2: 축구)
 		}
-		
-		if(chkEvent==2) {  // 야구팀일 경우 지역 저장 
-			team = (String)req.getParameter("baseballTeam");
-			region = (String)req.getParameter("BBregion");
-		} else if(chkEvent==2) {  // 축구팀일 경우 지역 저장 
-			team = (String)req.getParameter("soccerTeam");
-			region = (String)req.getParameter("SCregion");
-		} else { // 아무것도 선택하지 않았을 경우 전체 조회 
+
+		if (chkEvent == 1) { // 야구팀일 경우 지역 저장
+			team = (String) req.getParameter("baseballTeam");
+			region = (String) req.getParameter("BBregion");
+		} else if (chkEvent == 2) { // 축구팀일 경우 지역 저장
+			team = (String) req.getParameter("soccerTeam");
+			region = (String) req.getParameter("SCregion");
+		} else { // 아무것도 선택하지 않았을 경우 전체 조회
 			team = "all";
 			region = "all";
 		}
-		
-		Map<Integer, List> searchMap = new HashMap<>();
-		if(event==null) {  // 종목 값 없을 경우 월 일정 모두 검색하여 저장 
-			for(int i=0; i<lastDate; i++) {
-				
-			}
+
+		//	경기 일정 페이지에서 넘어왔을 경우.
+		int sno = 0;
+		if ((String)req.getParameter("schno")!=null) {
+			sno = Integer.parseInt((String)req.getParameter("schno"));
 		}
-	
+		
+		// 요청 파라미터에서 curPage 얻어오기
+		Paging paging;
+		
+		if(event!=null) {	//	상세검색을 했을 경우
+			paging = boardService.getSelectCurPage(req, event, team, region);
+		} else {	//	상세검색 안했을 경우 원래대로 출력
+			if(sno!=0) {
+				paging = boardService.getSelectbyScheNo(req, sno);
+			} else {
+				paging =  boardService.getCurPage(req);
+			}
+			
+		}
+		
+		// 게시판 목록 조회
+		List list;
+		if(event!=null) {	//	상세검색을 했을 경우
+			list = boardService.selectBoardByTeamRegion(paging, event, team, region);
+		} else {	//	상세검색 안했을 경우 원래대로 출력
+			
+			if(sno!=0) {
+				list = boardService.selectBoardByScheNo(paging, sno);
+			} else {
+				list = boardService.getList(paging);
+			}
+			
+		}
+
+		// model로 Paging 객체 넣기
+		req.setAttribute("paging", paging);
+		
+		// MODEL로 결과 넣기
+		req.setAttribute("list", list);
+
+		if(chkEvent==0) {
+			req.setAttribute("chkEvent", chkEvent);
+			
+		} else {
+			req.setAttribute("chkEvent", chkEvent);
+			req.setAttribute("team", team);
+			req.setAttribute("region", region);
+		}
+		
+		// view 지정
+		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
+
 	}
 }

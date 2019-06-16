@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -260,9 +262,60 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List selectBoardByTeamRegion(String event, String team, String region) {
-		// TODO Auto-generated method stub
-		return null;
+	public List selectBoardByTeamRegion(Paging paging, String event, String team, String region) {
+		
+		List searchBoard = boardDao.searchBoard(paging, event, team, region);
+		
+		return searchBoard;
+		
+	}
+
+	@Override
+	public Paging getSelectCurPage(HttpServletRequest req, String event, String team, String region) {
+		
+		// 전달파라미터 curPage 파싱
+		String param = req.getParameter("curPage");
+		int curPage = 0;
+		if (param != null && !"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		List scheduleno = boardDao.getScheduleno(event, team, region);
+		int cnt = 0;	// 전체 게시글 수
+		for (int i=0; i<scheduleno.size(); i++) {
+			cnt += boardDao.getSelectCntAll((int)scheduleno.get(i), team);
+		}
+		
+		// 페이징 객체 생성
+		Paging paging = new Paging(cnt, curPage);
+
+		return paging;
+	}
+
+	@Override
+	public List selectBoardByScheNo(Paging paging, int sno) {
+		
+		return boardDao.selectBoardByScheNo(paging, sno);
+	}
+
+	@Override
+	public Paging getSelectbyScheNo(HttpServletRequest req, int sno) {
+		
+		String param = req.getParameter("curPage");
+		
+		int curPage = 0;
+		if(param!=null &&!"".equals(param)) {
+			curPage = Integer.parseInt(param);
+		}
+
+		// 전체 게시글 수
+		int totalCount = boardDao.getSelectbyScheNo(sno);
+		
+		// 페이징 객체 생성
+		Paging paging = new Paging(totalCount, curPage);
+		
+		
+		return paging;
 	}
 
 	
