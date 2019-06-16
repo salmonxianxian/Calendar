@@ -20,7 +20,7 @@
 <style type="text/css">
 #header {
 	text-align: left;
-	background: #E1FFE1;
+	background: #828282;
 	height: 80px;
 	width: 1200px;
 	
@@ -30,7 +30,7 @@
 #footer {
 	text-align: center;
 	display: table;
-	background: #E1FFE1;
+	background: #828282;
 	height: 60px;
 	width: 1200px;
 	
