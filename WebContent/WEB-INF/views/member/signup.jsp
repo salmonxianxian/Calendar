@@ -218,7 +218,7 @@ function join() {
 
 <div><p id="reject"></p></div>
 
-<button type="button" id="joinConfirm" onClick="join()">가입하기</button> <button type="button">돌아가기</button>
+<button type="button" id="joinConfirm" onClick="join()">가입하기</button> <button type="button" onClick="history.go(-1)">돌아가기</button>
 
 
 </form>
