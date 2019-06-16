@@ -34,29 +34,6 @@ $(document).ready(function(){
 	
 });
 
-<<<<<<< HEAD
-
-//라디오버튼클릭시 option 바뀜
-function changes(value) {
-	
-	if(value=='base') {
-		nArray = new Array("기아타이거즈","두산베어스","롯데자이언츠","삼성라이온즈",
-				"키움히어로즈","한화이글스","KT위즈","LG트윈즈","NC다이노스","SK와이번스");
-	} else {
-		nArray = new Array("강원 FC","경남FC","대구FC","상주FC","성남FC","수원삼성블루윙즈","울산현대"
-				,"인천유나이티드","전북현대모터스","제주유나이티드","포항스틸러스","FC서울");
-	}
-	
-	for (i=0; i<form.sel.length; i++){
-		form.sel.options[i] = null;
-	}
-	
-	for(i=0; i<nArray.length; i++){
-		form.sel.options[i] = new Option(nArray[i]);
-	}
-	
-}
-
 
 $(document).ready(function(){
 	  $('.more2').click(function(){
@@ -68,11 +45,9 @@ $(document).ready(function(){
 	       $('.listnick').css('visibility', 'hidden');
 	    }
 	  });
-	});
+});
 
 
-=======
->>>>>>> master
 </script>
 
 <style type="text/css">
@@ -103,26 +78,22 @@ table, th{
 /* #listtable { */
 /* 	margin-left: auto; */
 /* 	margin-right: auto; */
-/* } */
+/* } 
 
 /* 본문 내용 몇글자만 보이고 가리기 */
-#qhsans {
-	overflow: hidden;
- 	text-overflow: ellipsis;
 
-}
 
-.listnick {
+ .listnick {
   font-size:13px;
   position:absolute; 
   top:230px;
-  left: 450px;
+  left: 450px; 
 /*   right: 320px; */
-  width:150px; 
+   width:150px; 
   height:80px; 
   background: #dcdcdc;
   visibility:hidden;
-}
+} 
 
 .more2 {
 	display: inline;
@@ -136,8 +107,6 @@ table, th{
   cursor:pointer;
 }
 
-
-
 </style>
 
 <!-- <script>
@@ -145,11 +114,9 @@ table, th{
 
 </script> -->
 
-<<<<<<< HEAD
 
 <!-- 사이드바 -->
 <div style="width:200px; background: #AAEBAA; float:left; height:660px;"> 
-=======
 <!-- 상세 검색 조건 유지를 위해 값 전달받음 -->
 <!-- 선택한 종목 = chkEvent, 선택한 팀 = team, 선택한 지역 = region -->
 <%	int chkEvent = (int)request.getAttribute("chkEvent"); %>
@@ -161,7 +128,6 @@ table, th{
 }%>
 
 <div style="width:200px; background: #b4b4b4; float:left; height:660px;"> 
->>>>>>> master
 <br><br><br>
 <form action="/board/list" method="get">
 <fieldset>
@@ -211,36 +177,7 @@ table, th{
 			<option value="한화"<% if("한화".equals(team)) { %>selected<% } %>>한화 이글스</option>
 		</select>
 	</div>
-	
-<<<<<<< HEAD
-	<input type="radio" name="sports" onclick="changes('foot');"> 축구
 
-
-<br><br>
-<label style="text-align: center;">팀</label>
-<br>
-
-<select name='sel' >
-<option value=''>★선택하세요★</option>
-<option value='1'>기아타이거즈</option>
-<option value='2'>두산베어스</option>
-<option value='3'>롯데자이언츠</option>
-<option value='4'>삼성라이온즈</option>
-<option value='5'>키움히어로즈</option>
-<option value='6'>한화이글스</option>
-<option value='7'>KT위즈</option>
-<option value='8'>LG트윈즈</option>
-<option value='9'>NC다이노스</option>
-<option value='10'>SK와이번스</option>
-</select>
-
-
-
-<br>
-<div style="text-align: center">
-<label>지역</label><br>
-<select>
-=======
 	<div id="selSC" <% if(chkEvent!=2) { %>style="display: none"<% } %>>
 		<select name="soccerTeam">	<!-- 축구 팀 선택 -->
 			<option value="all"<% if("all".equals(team)) { %>selected<% } %>>--- 축구팀 ---</option>
@@ -278,7 +215,6 @@ table, th{
 			<option value="창원"<% if("창원".equals(region)) { %>selected<% } %>>창원</option>
 		</select>
 	</div>
->>>>>>> master
 	
 	<div id="SCregion" <% if(chkEvent!=2) { %>style="display: none"<% } %>>
 		<select name="SCregion">	<!-- 축구 팀 지역 선택 -->

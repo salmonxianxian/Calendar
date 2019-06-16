@@ -40,9 +40,6 @@ public interface BoardDao {
 	
 	//scheduleno로 insertdate?
 	public int scheduleno(String team, String gamedate);
-<<<<<<< HEAD
-
-=======
 	
 	public List getScheduleno(String event, String team, String region);
 
@@ -53,5 +50,4 @@ public interface BoardDao {
 	public List selectBoardByScheNo(Paging paging, int sno);
 
 	public int getSelectbyScheNo(int sno);
->>>>>>> master
 }

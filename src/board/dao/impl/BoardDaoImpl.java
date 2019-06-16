@@ -174,41 +174,7 @@ public class BoardDaoImpl implements BoardDao {
 		return viewBoard;
 	}
 
-<<<<<<< HEAD
-	
-	// 지역 조회
-//	@Override
-//	public Board selectBoardByTeamRegion(Board viewBoard) {
-//
-//		String sql = "";
-//		sql += "select * from board";
-//   		sql += " where scheduleno in(";
-//        sql += " select scheduleno from schedule";
-//        sql += " where (hometeam = ? or awayteam = ?)"; 
-//        sql += " and hometeam in (select teamname from team where region = ?));";
-//
-//
-//		try {
-//			ps = conn.prepareStatement(sql);
-//			ps.setString(1, viewBoard);
-//
-//		} catch (SQLException e){
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				if(rs!=null)	rs.close();
-//				if(ps!=null)	ps.close();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//
-//		return viewBoard;
-//	}
 
-
-=======
->>>>>>> master
 	// 게시글 조회 
 	@Override
 	public int selectBoardno() {
@@ -397,11 +363,8 @@ public class BoardDaoImpl implements BoardDao {
 		int scheduleno = 0;
 		
 		String sql = "";
-<<<<<<< HEAD
-		sql += "SELECT scheduleno FROM schedule";
-=======
+
 		sql += "SELECT schduleno FROM schedule";
->>>>>>> master
 		sql += " WHERE gamedate=?";
 		sql += " And (hometeam=? or awayteam=?)";
 		
@@ -414,11 +377,8 @@ public class BoardDaoImpl implements BoardDao {
 			
 			rs = ps.executeQuery();
 			
-<<<<<<< HEAD
-			while(rs.next()) {
-=======
+
 			while(rs.next()){
->>>>>>> master
 				scheduleno = rs.getInt(1);
 			}
 			
@@ -429,12 +389,8 @@ public class BoardDaoImpl implements BoardDao {
 		return scheduleno;
 	}
 
-<<<<<<< HEAD
 
 
-
-	
-=======
 	@Override
 	public List getScheduleno(String event, String team, String region) {
 		
@@ -910,8 +866,4 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		return totalCount;
 	}
-
-	
-		
->>>>>>> master
 }

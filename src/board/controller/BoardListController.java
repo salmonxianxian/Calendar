@@ -70,17 +70,6 @@ public class BoardListController extends HttpServlet {
 			
 		}
 		
-<<<<<<< HEAD
-		
-		
-//		Map<Integer, List> searchMap = new HashMap<>();
-//		if(event==null) {  // 종목 값 없을 경우 월 일정 모두 검색하여 저장 
-//			for(int i=0; i<lastDate; i++) {
-//				
-//			}
-//		}
-	
-=======
 		// 게시판 목록 조회
 		List list;
 		if(event!=null) {	//	상세검색을 했을 경우
@@ -113,6 +102,5 @@ public class BoardListController extends HttpServlet {
 		// view 지정
 		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
 
->>>>>>> master
 	}
 }
