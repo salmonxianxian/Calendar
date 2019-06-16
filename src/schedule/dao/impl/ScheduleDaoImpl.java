@@ -108,9 +108,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		
 		List<Schedule> searchList = new ArrayList();
 		try {
-			if(event.equals("1")) {
-				if(team.equals("all")) { 
-					if(region.equals("all")) {	// 모든 야구팀 모든 지역 검색
+			if("all".equals(team)) {
+				if("all".equals(region)) {
+					if("1".equals(event)) {	//	야구 모든 팀 모든 지역 검색
 						String sql="";	
 						sql += "select scheduleno, hometeam, awayteam from schedule";
 						sql += " where hometeam in(";
@@ -128,8 +128,27 @@ public class ScheduleDaoImpl implements ScheduleDao {
 							schedule.setAwayteam(rs.getString("awayteam"));
 							searchList.add(schedule);
 						}
+					} else {	//	축구 모든 팀 모든 지역 검색
+						String sql="";
+						sql += "select scheduleno, hometeam, awayteam from schedule";
+						sql += " where hometeam in(";
+						sql += " select teamname from team";
+						sql += " where event = '2') and gamedate = ?";
+					
+						ps = conn.prepareStatement(sql);
+						ps.setString(1, getymd);
+						rs = ps.executeQuery();
 						
-					} else {	// 모든 야구팀 지역 선택 검색
+						while (rs.next()) {
+							Schedule schedule = new Schedule();
+							schedule.setScheduleno(rs.getInt("scheduleno"));
+							schedule.setHometeam(rs.getString("hometeam"));
+							schedule.setAwayteam(rs.getString("awayteam"));
+							searchList.add(schedule);
+						}
+					}
+				} else {
+					if("1".equals(event)) {	//	야구 모든팀 선택 지역
 						String sql="";
 						sql += "select scheduleno, hometeam, awayteam from schedule";
 						sql += " where hometeam in(";
@@ -148,74 +167,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 							schedule.setAwayteam(rs.getString("awayteam"));;
 							searchList.add(schedule);
 						}
-					}
-					
-				} else {
-					if(region.equals("all")) {	// 선택된 야구팀 모든 지역 검색
-						String sql="";
-						sql += "select scheduleno, hometeam, awayteam from schedule";
-						sql += " where (hometeam = ? or awayteam = ?)";
-						sql += "and gamedate = ?";
-						
-						ps = conn.prepareStatement(sql);
-						ps.setString(1, team);
-						ps.setString(2, team);
-						ps.setString(3, getymd);
-						rs = ps.executeQuery();
-						
-						while (rs.next()) {
-							Schedule schedule = new Schedule();
-							schedule.setScheduleno(rs.getInt("scheduleno"));
-							schedule.setHometeam(rs.getString("hometeam"));
-							schedule.setAwayteam(rs.getString("awayteam"));
-							searchList.add(schedule);
-						}
-						
-					} else {	//	선택된 야구팀 선택된 지역 검색
-						String sql="";
-						sql += "select scheduleno, hometeam, awayteam from schedule";
-						sql += " where hometeam in(select teamname from team";
-						sql += "  where region = ?) and";
-						sql += " (hometeam = ? or awayteam = ?) and gamedate = ?";
-						
-						ps = conn.prepareStatement(sql);
-						ps.setString(1, region);
-						ps.setString(2, team);
-						ps.setString(3, team);
-						ps.setString(4, getymd);
-						rs = ps.executeQuery();
-						
-						while (rs.next()) {
-							Schedule schedule = new Schedule();
-							schedule.setScheduleno(rs.getInt("scheduleno"));
-							schedule.setHometeam(rs.getString("hometeam"));
-							schedule.setAwayteam(rs.getString("awayteam"));
-							searchList.add(schedule);
-						}
-					}
-				}
-			} else if(event.equals("2")) {
-				if(team.equals("all")) {
-					if(region.equals("all")) {
-						String sql="";	//	모든 축구팀 모든 지역 검색
-						sql += "select scheduleno, hometeam, awayteam from schedule";
-						sql += " where hometeam in(";
-						sql += " select teamname from team";
-						sql += " where event = '2') and gamedate = ?";
-					
-						ps = conn.prepareStatement(sql);
-						ps.setString(1, getymd);
-						rs = ps.executeQuery();
-						
-						while (rs.next()) {
-							Schedule schedule = new Schedule();
-							schedule.setScheduleno(rs.getInt("scheduleno"));
-							schedule.setHometeam(rs.getString("hometeam"));
-							schedule.setAwayteam(rs.getString("awayteam"));
-							searchList.add(schedule);
-						}
-						
-					} else {	//	모든 축구팀 지역 선택 검색
+					} else {	//	축구 모든팀 선택 지역
 						String sql="";
 						sql += "select scheduleno, hometeam, awayteam from schedule";
 						sql += " where hometeam in(";
@@ -235,48 +187,47 @@ public class ScheduleDaoImpl implements ScheduleDao {
 							searchList.add(schedule);
 						}
 					}
-				} else {
-					if(region.equals("all")) {	//	선택된 축구팀 모든 지역 검색
-						String sql="";
-						sql += "select scheduleno, hometeam, awayteam from schedule";
-						sql += " where (hometeam = ? or awayteam = ?)";
-						sql += "and gamedate = ?";
-						
-						ps = conn.prepareStatement(sql);
-						ps.setString(1, team);
-						ps.setString(2, team);
-						ps.setString(3, getymd);
-						rs = ps.executeQuery();
-						
-						while (rs.next()) {
-							Schedule schedule = new Schedule();
-							schedule.setScheduleno(rs.getInt("scheduleno"));
-							schedule.setHometeam(rs.getString("hometeam"));
-							schedule.setAwayteam(rs.getString("awayteam"));
-							searchList.add(schedule);
-						}
-						
-					} else {	//	선택된 축구팀 선택 지역 검색
-						String sql="";
-						sql += "select scheduleno, hometeam, awayteam from schedule";
-						sql += " where hometeam in(select teamname from team";
-						sql += "  where region = ?) and";
-						sql += " (hometeam = ? or awayteam = ?) and gamedate = ?";
-						
-						ps = conn.prepareStatement(sql);
-						ps.setString(1, region);
-						ps.setString(2, team);
-						ps.setString(3, team);
-						ps.setString(4, getymd);
-						rs = ps.executeQuery();
-						
-						while (rs.next()) {
-							Schedule schedule = new Schedule();
-							schedule.setScheduleno(rs.getInt("scheduleno"));
-							schedule.setHometeam(rs.getString("hometeam"));
-							schedule.setAwayteam(rs.getString("awayteam"));
-							searchList.add(schedule);
-						}
+				}
+			} else {	
+				if("all".equals(region)) {	//	선택팀 모든 지역
+					String sql="";
+					sql += "select scheduleno, hometeam, awayteam from schedule";
+					sql += " where (hometeam = ? or awayteam = ?)";
+					sql += "and gamedate = ?";
+					
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, team);
+					ps.setString(2, team);
+					ps.setString(3, getymd);
+					rs = ps.executeQuery();
+					
+					while (rs.next()) {
+						Schedule schedule = new Schedule();
+						schedule.setScheduleno(rs.getInt("scheduleno"));
+						schedule.setHometeam(rs.getString("hometeam"));
+						schedule.setAwayteam(rs.getString("awayteam"));
+						searchList.add(schedule);
+					}
+				} else {	//	선택팀 선택 지역
+					String sql="";
+					sql += "select scheduleno, hometeam, awayteam from schedule";
+					sql += " where hometeam in(select teamname from team";
+					sql += "  where region = ?) and";
+					sql += " (hometeam = ? or awayteam = ?) and gamedate = ?";
+					
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, region);
+					ps.setString(2, team);
+					ps.setString(3, team);
+					ps.setString(4, getymd);
+					rs = ps.executeQuery();
+					
+					while (rs.next()) {
+						Schedule schedule = new Schedule();
+						schedule.setScheduleno(rs.getInt("scheduleno"));
+						schedule.setHometeam(rs.getString("hometeam"));
+						schedule.setAwayteam(rs.getString("awayteam"));
+						searchList.add(schedule);
 					}
 				}
 			}
