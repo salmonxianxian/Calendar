@@ -51,10 +51,11 @@ public class ReplyDaoImpl implements ReplyDao {
 			while (rs.next()) {
 				Reply reply = new Reply();
 				
+				reply.setRnum(rs.getInt("rnum"));
 				reply.setReplyno(rs.getInt("replyno"));
 				reply.setNickname(rs.getString("nickname"));
 				reply.setBoardno(rs.getInt("boardno"));
-				reply.setReplyContent(rs.getString("recontent"));
+				reply.setRecontent(rs.getString("recontent"));
 				reply.setInsertdate(rs.getDate("insertDate"));
 				
 				replyList.add(reply);
@@ -69,7 +70,7 @@ public class ReplyDaoImpl implements ReplyDao {
 				e.printStackTrace();
 			}
 		}
-		System.out.println(replyList);
+//		System.out.println(replyList);
 		return replyList;
 	}
 
@@ -96,7 +97,7 @@ public class ReplyDaoImpl implements ReplyDao {
 			
 			ps.setString(1,  reply.getNickname());
 			ps.setInt(2,  reply.getBoardno());
-			ps.setString(3,  reply.getReplyContent());
+			ps.setString(3,  reply.getRecontent());
 			
 			ps.executeUpdate();
 			
@@ -111,7 +112,12 @@ public class ReplyDaoImpl implements ReplyDao {
 		}
 			
 	}
+
 	
+	
+//----------------------------------------------------------------------
+	
+	//댓글삭제
 	@Override
 	public void deleteReply(Reply reply) {
 		String sql

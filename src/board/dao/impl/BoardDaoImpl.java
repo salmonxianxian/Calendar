@@ -11,6 +11,7 @@ import java.util.List;
 import board.dao.face.BoardDao;
 import dbutil.DBConn;
 import dto.Board;
+import dto.Icon;
 import dto.Schedule;
 import util.Paging;
 
@@ -173,6 +174,7 @@ public class BoardDaoImpl implements BoardDao {
 		return viewBoard;
 	}
 
+
 	// 게시글 조회 
 	@Override
 	public int selectBoardno() {
@@ -313,16 +315,17 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	//---------------------------------------------
-//	@Override
-//	public List getList(String event, String team, String region) {
-//		
-//		
-//		
-//		return null;
-//	}
+	@Override
+	public List getList(String event, String team, String region) {
+		
+		
+		
+		return null;
+	}
 
 	
-	
+
+//----------------------------------------------------------------------------------------------	
 	// 내가 쓴 글 보기 
 	@Override
 	public void myBoard(Board board) {
@@ -352,12 +355,15 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
+//-----------------------------------------------------------------------
+	//응원하는팀 
 	@Override
 	public int scheduleno(String team, String gamedate) {
 		
 		int scheduleno = 0;
 		
 		String sql = "";
+
 		sql += "SELECT schduleno FROM schedule";
 		sql += " WHERE gamedate=?";
 		sql += " And (hometeam=? or awayteam=?)";
@@ -371,6 +377,7 @@ public class BoardDaoImpl implements BoardDao {
 			
 			rs = ps.executeQuery();
 			
+
 			while(rs.next()){
 				scheduleno = rs.getInt(1);
 			}
@@ -381,6 +388,8 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return scheduleno;
 	}
+
+
 
 	@Override
 	public List getScheduleno(String event, String team, String region) {
@@ -857,7 +866,4 @@ public class BoardDaoImpl implements BoardDao {
 		}
 		return totalCount;
 	}
-
-	
-		
 }
